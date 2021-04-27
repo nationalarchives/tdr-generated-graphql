@@ -1,5 +1,6 @@
 query getFileCheckProgress($consignmentId: UUID!) {
     getConsignment(consignmentid: $consignmentId) {
+        allChecksSucceeded
         totalFiles
         fileChecks {
             antivirusProgress {

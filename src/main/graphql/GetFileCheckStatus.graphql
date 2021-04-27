@@ -1,5 +1,0 @@
-query getFileCheckStatus($consignmentId: UUID!) {
-    getConsignment(consignmentid: $consignmentId) {
-        allChecksSucceeded
-    }
-}

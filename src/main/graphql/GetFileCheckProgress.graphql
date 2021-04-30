@@ -1,6 +1,7 @@
 query getFileCheckProgress($consignmentId: UUID!) {
     getConsignment(consignmentid: $consignmentId) {
         allChecksSucceeded
+        parentFolder
         totalFiles
         fileChecks {
             antivirusProgress {

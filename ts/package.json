@@ -26,12 +26,12 @@
   "devDependencies": {
     "@graphql-codegen/introspection": "^1.17.8",
     "@graphql-codegen/typescript": "^1.17.8",
-    "@graphql-codegen/typescript-document-nodes": "^1.17.8",
+    "@graphql-codegen/typescript-document-nodes": "^1.17.11",
     "@graphql-codegen/typescript-graphql-files-modules": "^1.17.8",
     "@graphql-codegen/typescript-operations": "^1.17.8",
     "ts-loader": "^6.2.2",
     "typescript": "^3.8.3",
-    "webpack": "^4.42.0",
+    "webpack": "^4.46.0",
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {

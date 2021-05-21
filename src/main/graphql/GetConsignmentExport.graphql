@@ -9,7 +9,7 @@ query getConsignmentForExport($consignmentId: UUID!) {
             code
         }
         transferringBody {
-            code
+            name
         }
         files {
             fileId

@@ -28,15 +28,15 @@
     "@graphql-codegen/typescript": "^1.17.8",
     "@graphql-codegen/typescript-document-nodes": "^1.17.11",
     "@graphql-codegen/typescript-graphql-files-modules": "^1.17.8",
-    "@graphql-codegen/typescript-operations": "^1.17.8",
+    "@graphql-codegen/typescript-operations": "^1.17.16",
     "ts-loader": "^6.2.2",
-    "typescript": "^3.8.3",
+    "typescript": "^4.2.4",
     "webpack": "^5.37.1",
     "webpack-cli": "^4.7.0"
   },
   "dependencies": {
-    "@graphql-codegen/cli": "^1.17.9",
-    "apollo-link-http": "^1.5.16",
+    "@graphql-codegen/cli": "^1.21.4",
+    "apollo-link-http": "^1.5.17",
     "dts-bundle": "^0.7.3",
     "graphql": "^14.6.0",
     "y18n": "^4.0.1"

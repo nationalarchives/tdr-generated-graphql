@@ -18,7 +18,7 @@ module.exports = {
   },
   plugins: [new DtsBundlePlugin()],
   output: {
-    library: "",
+    library: "tdr-generated-graphql",
     libraryTarget: "commonjs-module",
     filename: "index.js",
     path: path.resolve(__dirname, ".")
@@ -27,7 +27,7 @@ module.exports = {
 
 function DtsBundlePlugin() {}
 DtsBundlePlugin.prototype.apply = function(compiler) {
-  compiler.plugin("done", function() {
+  compiler.hooks.done.tap("DTS Bundle", () => {
     var dts = require("dts-bundle");
 
     dts.bundle({

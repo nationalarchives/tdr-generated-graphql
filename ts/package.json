@@ -1,6 +1,6 @@
 {
   "name": "@nationalarchives/tdr-generated-graphql",
-  "version": "1.0.54",
+  "version": "1.0.55",
   "description": "",
   "main": "index.ts",
   "scripts": {
@@ -38,7 +38,7 @@
     "@graphql-codegen/cli": "^1.17.9",
     "apollo-link-http": "^1.5.16",
     "dts-bundle": "^0.7.3",
-    "graphql": "^14.6.0",
+    "graphql": "^14.7.0",
     "y18n": "^4.0.1"
   }
 }

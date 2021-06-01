@@ -6,11 +6,8 @@ These classes are used by other TDR repositories to communicate with the consign
 
 ### Building locally
 1. Add a new query file to `src/main/graphql`:
-2.  Run `sbt graphqlSchemaGen` in the [consignment api](https://github.com/nationalarchives/tdr-consignment-api) project. This will generate a `schema.graphql` file in the `target/sbt-graphql` directory
-3. Copy this `schema.graphql` file
-4. Switch back to the `generated-graphl` repo
-5. Paste the file into the `src/main/resources` directory
-6. Run the following commands to allow you to check that your changes work locally before submitting them:
+2. Download the latest [graphql schema file](https://raw.githubusercontent.com/nationalarchives/tdr-consignment-api/master/schema.graphql) into the `src/main/resources` directory
+3. Run the following commands to allow you to check that your changes work locally before submitting them:
 #### Scala version
   * `sbt package publishLocal`
 
@@ -21,7 +18,7 @@ Other sbt projects that have this project as a dependency can access the local s
   ... other dependencies...
   "uk.gov.nationalarchives" %% "tdr-generated-graphql" % "[version number]-SNAPSHOT"
   ... other dependences...
-  ```
+   ```
   
 #### Typescript version  
 The following commands create a symbolic link to the generated Typescript version of the schema.
@@ -36,12 +33,12 @@ See the following blog post for more information on `npm link` and instructions 
 ### Releasing
 * Commit and push the new query file that sits in `src/main/graphql`
 * Open a pull request, and merge to master once it has been reviewed.
-* This project should be run manually in Jenkins.
+* The test build will trigger the deploy job which will publish the latest version of the library.
 
 #### To Run Jenkins Manually
 * Go to the TDR Graphql Code Generation job in Jenkins. 
 * Click on 'Build with parameters'
-* Leave STAGE option as 'intg' and paste the schema from the consignemnt api repo into the SCHEMA section.
+* Leave STAGE option as 'intg'
 * You can look at the console output when/after you run the jenkins build to help bug fix etc.
 
 ### TDR Documentation

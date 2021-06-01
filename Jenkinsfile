@@ -2,6 +2,8 @@ library("tdr-jenkinslib")
 
 def versionBumpBranch = "version-bump-${BUILD_NUMBER}"
 def repo = "tdr-generated-graphql"
+def resourcePath = "src/main/resources"
+def remoteSchemaUrl = "https://raw.githubusercontent.com/nationalarchives/tdr-consignment-api/master/schema.graphql"
 
 pipeline {
   agent {
@@ -51,8 +53,8 @@ pipeline {
             }
             stage("Update npm version") {
               steps {
-                sh "mkdir -p src/main/resources"
-                sh "wget -O src/main/resources/schema.graphql https://raw.githubusercontent.com/nationalarchives/tdr-consignment-api/master/schema.graphql"
+                sh "mkdir -p ${resourcePath}"
+                sh "wget -O ${resourcePath}/schema.graphql ${remoteSchemaUrl}"
                 dir("ts") {
                   sh 'npm ci'
                   sh 'npm run codegen'
@@ -104,8 +106,8 @@ pipeline {
             }
             stage("Update sbt release") {
               steps {
-                sh "mkdir -p src/main/resources"
-                sh "wget -O src/main/resources/schema.graphql https://raw.githubusercontent.com/nationalarchives/tdr-consignment-api/master/schema.graphql"
+                sh "mkdir -p ${resourcePath}"
+                sh "wget -O ${resourcePath}/schema.graphql ${remoteSchemaUrl}"
 
                 //commits to origin branch
                 sshagent(['github-jenkins']) {

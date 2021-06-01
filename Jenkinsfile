@@ -10,7 +10,6 @@ pipeline {
 
   parameters {
     choice(name: "STAGE", choices: ["intg", "staging", "prod"], description: "The stage you are deploying the schema to")
-    text(name: "SCHEMA", defaultValue: "")
   }
   stages {
     stage("Run git secrets") {
@@ -53,7 +52,7 @@ pipeline {
             stage("Update npm version") {
               steps {
                 sh "mkdir -p src/main/resources"
-                sh "echo '${params.SCHEMA.trim()}' > src/main/resources/schema.graphql"
+                sh "wget -O src/main/resources/schema.graphql https://raw.githubusercontent.com/nationalarchives/tdr-consignment-api/master/schema.graphql"
                 dir("ts") {
                   sh 'npm ci'
                   sh 'npm run codegen'
@@ -106,7 +105,7 @@ pipeline {
             stage("Update sbt release") {
               steps {
                 sh "mkdir -p src/main/resources"
-                sh "echo '${params.SCHEMA.trim()}' > src/main/resources/schema.graphql"
+                sh "wget -O src/main/resources/schema.graphql https://raw.githubusercontent.com/nationalarchives/tdr-consignment-api/master/schema.graphql"
 
                 //commits to origin branch
                 sshagent(['github-jenkins']) {

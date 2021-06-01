@@ -1,0 +1,62 @@
+library("tdr-jenkinslib")
+
+def versionTag = "v${env.BUILD_NUMBER}"
+def repo = "tdr-transfer-frontend"
+
+pipeline {
+  agent {
+    label "master"
+  }
+  stages {
+    stage("Run git secrets") {
+      steps {
+        script {
+          tdr.runGitSecrets(repo)
+        }
+      }
+    }
+    stage('Test') {
+      agent {
+        ecs {
+          inheritFrom 'transfer-frontend'
+        }
+      }
+      steps {
+        script {
+          tdr.reportStartOfBuildToGitHub(repo, env.GIT_COMMIT)
+          sh "wget -O src/main/resources/schema.graphql https://raw.githubusercontent.com/nationalarchives/tdr-consignment-api/master/schema.graphql"
+          sh 'sbt -no-colors graphqlCodegen'
+        }
+      }
+    }
+    stage('Post-build') {
+      when {
+        expression { env.BRANCH_NAME == "master" }
+      }
+      stage('Deploy to integration') {
+        steps {
+          build(
+              job: "TDR Graphql Code Generation",
+              parameters: [
+                  string(name: "STAGE", value: "intg")
+              ],
+              wait: false)
+        }
+      }
+    }
+  }
+
+
+  post {
+    failure {
+      script {
+        tdr.reportFailedBuildToGitHub(repo, env.GIT_COMMIT)
+      }
+    }
+    success {
+      script {
+        tdr.reportSuccessfulBuildToGitHub(repo, env.GIT_COMMIT)
+      }
+    }
+  }
+}

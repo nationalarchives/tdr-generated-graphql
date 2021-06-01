@@ -15,7 +15,7 @@ pipeline {
         }
       }
     }
-    stage('Test') {
+    stage('Check queries run against the latest API schema') {
       agent {
         ecs {
           inheritFrom 'transfer-frontend'
@@ -33,14 +33,16 @@ pipeline {
       when {
         expression { env.BRANCH_NAME == "master" }
       }
-      stage('Deploy to integration') {
-        steps {
-          build(
-              job: "TDR Graphql Code Generation",
-              parameters: [
-                  string(name: "STAGE", value: "intg")
-              ],
-              wait: false)
+      stages {
+        stage('Deploy library') {
+          steps {
+            build(
+                job: "TDR Graphql Code Generation",
+                parameters: [
+                    string(name: "STAGE", value: "intg")
+                ],
+                wait: false)
+          }
         }
       }
     }

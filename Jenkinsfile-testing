@@ -31,6 +31,7 @@ pipeline {
     }
     stage('Post-build') {
       when {
+        beforeAgent true
         expression { env.BRANCH_NAME == "master" }
       }
       stages {

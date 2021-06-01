@@ -48,8 +48,6 @@ pipeline {
       }
     }
   }
-
-
   post {
     failure {
       script {

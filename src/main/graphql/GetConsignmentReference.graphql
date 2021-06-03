@@ -1,0 +1,5 @@
+query getConsignmentReference($consignmentId: UUID!) {
+    getConsignment(consignmentid: $consignmentId) {
+        consignmentReference
+    }
+}

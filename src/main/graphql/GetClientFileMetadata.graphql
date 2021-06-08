@@ -1,0 +1,5 @@
+query getClientFileMetadata($fileId: UUID!) {
+    getClientFileMetadata(fileId: $fileId) {
+        originalPath
+    }
+}

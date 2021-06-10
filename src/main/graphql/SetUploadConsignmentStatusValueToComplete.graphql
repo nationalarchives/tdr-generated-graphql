@@ -1,3 +1,0 @@
-mutation setUploadConsignmentStatusValueToComplete($consignmentId: UUID!) {
-    setUploadConsignmentStatusValueToComplete(consignmentid: $consignmentId)
-}

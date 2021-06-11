@@ -1,6 +1,7 @@
 library("tdr-jenkinslib")
 
 def repo = "tdr-generated-graphql"
+def pullRequestTitlePrefix = "Version Bump from build number"
 
 pipeline {
   agent {
@@ -32,7 +33,11 @@ pipeline {
     stage('Post-build') {
       when {
         beforeAgent true
-        expression { env.BRANCH_NAME == "master" }
+
+        expression {
+          currentGitCommit = sh(script: "git log -n 1", returnStdout: true).trim()
+          return !(currentGitCommit =~ /$pullRequestTitlePrefix (\d+)/) && env.BRANCH_NAME == "master"
+        }
       }
       stages {
         stage('Deploy library') {

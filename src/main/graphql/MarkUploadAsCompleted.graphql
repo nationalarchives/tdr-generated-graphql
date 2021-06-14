@@ -1,0 +1,3 @@
+mutation markUploadAsCompleted($consignmentId: UUID!) {
+  markUploadAsCompleted(consignmentid: $consignmentId)
+}

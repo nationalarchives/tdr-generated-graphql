@@ -27,7 +27,7 @@ module.exports = {
 
 function DtsBundlePlugin() {}
 DtsBundlePlugin.prototype.apply = function(compiler) {
-  compiler.hooks.done.tap("DTS Bundle", () => {
+  compiler.plugin("done", function() {
     var dts = require("dts-bundle");
 
     dts.bundle({

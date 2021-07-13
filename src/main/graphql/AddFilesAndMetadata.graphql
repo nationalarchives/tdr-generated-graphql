@@ -1,6 +1,6 @@
 mutation AddFilesAndMetadata($input: AddFileAndMetadataInput!) {
     addFilesAndMetadata(addFilesAndMetadataInput: $input) {
         fileId
-        sequenceNumber
+        matchId
     }
 }

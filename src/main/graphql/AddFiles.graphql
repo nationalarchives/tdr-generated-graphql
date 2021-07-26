@@ -1,5 +1,0 @@
-mutation addFiles($addFilesInput: AddFilesInput!) {
-  addFiles(addFilesInput: $addFilesInput) {
-    fileIds
-  }
-}

@@ -1,6 +1,0 @@
-query getFiles($consignmentId: UUID!) {
-    getFiles(consignmentid: $consignmentId) {
-        fileIds
-    }
-}
-

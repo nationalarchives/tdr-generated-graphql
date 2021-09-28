@@ -7,7 +7,7 @@ def remoteSchemaUrl = "https://raw.githubusercontent.com/nationalarchives/tdr-co
 
 pipeline {
   agent {
-    label "master"
+    label "built-in"
   }
 
   parameters {

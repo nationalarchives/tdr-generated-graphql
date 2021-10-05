@@ -38,7 +38,7 @@
     "@graphql-codegen/cli": "^2.2.0",
     "apollo-link-http": "^1.5.17",
     "dts-bundle": "^0.7.3",
-    "graphql": "^15.6.0",
+    "graphql": "^15.6.1",
     "y18n": "^5.0.8"
   }
 }

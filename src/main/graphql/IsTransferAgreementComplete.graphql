@@ -1,5 +1,0 @@
-query isTransferAgreementComplete($consignmentId: UUID!) {
-  getTransferAgreement(consignmentid: $consignmentId) {
-    isAgreementComplete
-  }
-}

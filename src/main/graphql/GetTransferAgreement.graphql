@@ -6,7 +6,6 @@ query getTransferAgreement($consignmentId: UUID!) {
     allPublicRecords
     appraisalSelectionSignedOff
     sensitivityReviewSignedOff
-    isAgreementComplete
     initialOpenRecords
   }
 }

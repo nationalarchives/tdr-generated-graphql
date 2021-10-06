@@ -36,7 +36,7 @@ See the following blog post for more information on `npm link` and instructions 
 * The test build will trigger the deploy job which will publish the latest version of the library.
 
 #### To Run Jenkins Manually
-* Go to the TDR Graphql Code Generation job in Jenkins. 
+* Go to the [TDR Graphql Code Generation](https://jenkins.tdr-management.nationalarchives.gov.uk/job/TDR%20Graphql%20Code%20Generation/) job in Jenkins. 
 * Click on 'Build with parameters'
 * Leave STAGE option as 'intg'
 * You can look at the console output when/after you run the jenkins build to help bug fix etc.

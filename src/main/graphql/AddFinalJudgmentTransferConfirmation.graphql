@@ -1,0 +1,6 @@
+mutation AddFinalJudgmentTransferConfirmation($input: AddFinalJudgmentTransferConfirmationInput!){
+    addFinalJudgmentTransferConfirmation(addFinalJudgmentTransferConfirmationInput: $input) {
+        consignmentId
+        legalCustodyTransferConfirmed
+    }
+}

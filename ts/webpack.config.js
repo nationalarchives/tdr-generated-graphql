@@ -3,7 +3,6 @@ const fs = require("fs");
 
 module.exports = {
   entry: "./src/index.ts",
-  devtool: "inline-source-map",
   module: {
     rules: [
       {

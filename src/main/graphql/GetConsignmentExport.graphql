@@ -5,6 +5,7 @@ query getConsignmentForExport($consignmentId: UUID!) {
         transferInitiatedDatetime
         exportDatetime
         consignmentReference
+        consignmentType
         series {
             code
         }

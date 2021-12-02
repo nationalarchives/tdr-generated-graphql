@@ -1,0 +1,9 @@
+query getConsignmentFiles($consignmentId: UUID!) {
+    getConsignment(consignmentid: $consignmentId) {
+        files {
+            metadata {
+                clientSideOriginalFilePath
+            }
+        }
+    }
+}

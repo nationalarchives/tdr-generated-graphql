@@ -6,8 +6,10 @@ These classes are used by other TDR repositories to communicate with the consign
 
 ### Building locally
 1. Add a new query file to `src/main/graphql`:
-2. Download the latest [graphql schema file](https://raw.githubusercontent.com/nationalarchives/tdr-consignment-api/master/schema.graphql) into the `src/main/resources` directory
-3. Run the following commands to allow you to check that your changes work locally before submitting them:
+   * The file name should be in Pascal case e.g. FooBarBaz
+   * The query/mutation name should be in Camel case e.g. fooBarBaz
+3. Download the latest [graphql schema file](https://raw.githubusercontent.com/nationalarchives/tdr-consignment-api/master/schema.graphql) into the `src/main/resources` directory
+4. Run the following commands to allow you to check that your changes work locally before submitting them:
 #### Scala version
   * `sbt package publishLocal`
 

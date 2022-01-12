@@ -1,4 +1,4 @@
-mutation AddFilesAndMetadata($input: AddFileAndMetadataInput!) {
+mutation addFilesAndMetadata($input: AddFileAndMetadataInput!) {
     addFilesAndMetadata(addFilesAndMetadataInput: $input) {
         fileId
         matchId

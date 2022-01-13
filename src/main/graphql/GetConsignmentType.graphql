@@ -1,0 +1,5 @@
+query getConsignmentType($consignmentId: UUID!) {
+  getConsignment(consignmentid: $consignmentId) {
+    consignmentType
+  }
+}

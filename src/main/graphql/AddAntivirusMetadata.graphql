@@ -1,4 +1,4 @@
-mutation AddAntivirusMetadata($input: AddAntivirusMetadataInput!) {
+mutation addAntivirusMetadata($input: AddAntivirusMetadataInput!) {
     addAntivirusMetadata(addAntivirusMetadataInput: $input) {
         fileId
         software

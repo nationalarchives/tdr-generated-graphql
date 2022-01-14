@@ -1,4 +1,4 @@
-mutation AddFinalTransferConfirmation($input: AddFinalTransferConfirmationInput!){
+mutation addFinalTransferConfirmation($input: AddFinalTransferConfirmationInput!){
     addFinalTransferConfirmation(addFinalTransferConfirmationInput: $input) {
         consignmentId
         finalOpenRecordsConfirmed

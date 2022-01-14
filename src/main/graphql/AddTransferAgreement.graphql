@@ -1,4 +1,4 @@
-mutation AddTransferAgreement($input: AddTransferAgreementInput!){
+mutation addTransferAgreement($input: AddTransferAgreementInput!){
     addTransferAgreement(addTransferAgreementInput: $input) {
         consignmentId
         allPublicRecords

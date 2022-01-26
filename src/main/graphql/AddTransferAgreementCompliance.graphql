@@ -1,0 +1,8 @@
+mutation addTransferAgreementCompliance($input: AddTransferAgreementComplianceInput!){
+    addTransferAgreementCompliance(addTransferAgreementComplianceInput: $input) {
+        consignmentId
+        appraisalSelectionSignedOff
+        sensitivityReviewSignedOff
+        initialOpenRecords
+    }
+}

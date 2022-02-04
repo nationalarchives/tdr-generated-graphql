@@ -42,5 +42,6 @@ query getConsignmentForExport($consignmentId: UUID!) {
                 softwareVersion
             }
         }
+        emptyFolders
     }
 }

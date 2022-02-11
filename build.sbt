@@ -26,12 +26,12 @@ ThisBuild / description := "Classes to be used by the graphql client to communic
 ThisBuild / licenses := List("MIT" -> new URL("https://choosealicense.com/licenses/mit/"))
 ThisBuild / homepage := Some(url("https://github.com/nationalarchives/tdr-consignment-api-data"))
 
-ThisBuild / publishTo := Some("GitHub <GITHUB_OWNER> Apache Maven Packages" at "https://maven.pkg.github.com/<GITHUB_OWNER>/<GITHUB_PROJECT>")
+ThisBuild / publishTo := Some("GitHub nationalarchives Apache Maven Packages" at "https://maven.pkg.github.com/nationalarchives/tdr-generated-graphql")
 ThisBuild / publishMavenStyle := true
 ThisBuild / credentials += Credentials(
   "GitHub Package Registry",
   "maven.pkg.github.com",
-  "<GITHUB_OWNER>",
+  "nationalarchives",
   System.getenv("GITHUB_TOKEN")
 )
 

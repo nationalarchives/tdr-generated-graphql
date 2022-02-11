@@ -1,7 +1,7 @@
 import Dependencies._
 import sbt.url
 
-ThisBuild / version := (version in ThisBuild).value
+ThisBuild / version := (ThisBuild / version).value
 ThisBuild / organization := "uk.gov.nationalarchives"
 ThisBuild / organizationName := "National Archives"
 
@@ -26,15 +26,14 @@ ThisBuild / description := "Classes to be used by the graphql client to communic
 ThisBuild / licenses := List("MIT" -> new URL("https://choosealicense.com/licenses/mit/"))
 ThisBuild / homepage := Some(url("https://github.com/nationalarchives/tdr-consignment-api-data"))
 
-s3acl := None
-s3sse := true
-ThisBuild / publishMavenStyle := true 
-
-ThisBuild / publishTo := {
-  val prefix = if (isSnapshot.value) "snapshots" else "releases"
-  Some(s3resolver.value(s"My ${prefix} S3 bucket", s3(s"tdr-$prefix-mgmt")))
-}
-
+ThisBuild / publishTo := Some("GitHub <GITHUB_OWNER> Apache Maven Packages" at "https://maven.pkg.github.com/<GITHUB_OWNER>/<GITHUB_PROJECT>")
+ThisBuild / publishMavenStyle := true
+ThisBuild / credentials += Credentials(
+  "GitHub Package Registry",
+  "maven.pkg.github.com",
+  "<GITHUB_OWNER>",
+  System.getenv("GITHUB_TOKEN")
+)
 
 resolvers +=
   "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"

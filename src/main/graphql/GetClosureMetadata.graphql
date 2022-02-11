@@ -1,0 +1,27 @@
+query getClosureMetadata($consignmentId: UUID!) {
+    getClosureMetadata(consignmentid: $consignmentId) {
+        name,
+        description,
+        fullName,
+        propertyType,
+        propertyGroup,
+        dataType,
+        editable,
+        multiValue,
+        defaultValue,
+        values {
+            value
+            dependencies {
+                name,
+                description,
+                fullName,
+                propertyType,
+                propertyGroup,
+                dataType,
+                editable,
+                multiValue,
+                defaultValue
+            }
+        }
+    }
+}

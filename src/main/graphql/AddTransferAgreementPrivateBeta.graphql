@@ -1,0 +1,8 @@
+mutation addTransferAgreementPrivateBeta($input: AddTransferAgreementPrivateBetaInput!){
+    addTransferAgreementPrivateBeta(addTransferAgreementPrivateBetaInput: $input) {
+        consignmentId
+        allPublicRecords
+        allCrownCopyright
+        allEnglish
+    }
+}

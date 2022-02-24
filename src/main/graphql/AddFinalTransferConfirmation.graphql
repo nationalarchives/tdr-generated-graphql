@@ -2,6 +2,6 @@ mutation addFinalTransferConfirmation($input: AddFinalTransferConfirmationInput!
     addFinalTransferConfirmation(addFinalTransferConfirmationInput: $input) {
         consignmentId
         finalOpenRecordsConfirmed
-        legalOwnershipTransferConfirmed
+        legalCustodyTransferConfirmed
     }
 }

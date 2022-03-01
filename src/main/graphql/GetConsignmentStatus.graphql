@@ -3,6 +3,7 @@ query getConsignmentStatus($consignmentId: UUID!) {
         currentStatus {
           transferAgreement
           upload
+          confirmTransfer
         }
     }
 }

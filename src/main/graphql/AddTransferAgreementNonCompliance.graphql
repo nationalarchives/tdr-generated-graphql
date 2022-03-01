@@ -1,8 +1,0 @@
-mutation addTransferAgreementNotCompliance($input: AddTransferAgreementNotComplianceInput!){
-    addTransferAgreementNotCompliance(addTransferAgreementNotComplianceInput: $input) {
-        consignmentId
-        allPublicRecords
-        allCrownCopyright
-        allEnglish
-    }
-}

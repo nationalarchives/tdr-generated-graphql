@@ -15,6 +15,7 @@ query getConsignmentForExport($consignmentId: UUID!) {
         files {
             fileId
             fileType
+            fileName
             metadata {
                 clientSideFileSize,
                 clientSideLastModifiedDate,

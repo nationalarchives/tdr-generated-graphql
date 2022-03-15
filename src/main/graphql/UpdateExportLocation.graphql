@@ -1,4 +1,0 @@
-mutation updateExportLocation($updateExportLocationInput: UpdateExportLocationInput!) {
-    updateExportLocation(exportLocation: $updateExportLocationInput)
-}
-

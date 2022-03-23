@@ -9,7 +9,7 @@
     "esModuleInterop": true,
     "sourceMap": true,
     "declaration": true,
-    "declarationDir": "./src",
+    "declarationDir": ".",
     "moduleResolution": "node",
     "strict": true
   },

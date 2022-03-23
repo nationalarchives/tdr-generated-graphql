@@ -26,7 +26,7 @@
   "devDependencies": {
     "@graphql-codegen/introspection": "^2.1.1",
     "@graphql-codegen/typescript": "^2.4.7",
-    "@graphql-codegen/typescript-document-nodes": "^2.2.7",
+    "@graphql-codegen/typescript-document-nodes": "^2.2.8",
     "@graphql-codegen/typescript-graphql-files-modules": "^2.1.1",
     "@graphql-codegen/typescript-operations": "^2.3.5",
     "ts-loader": "^7.0.5",
@@ -37,7 +37,6 @@
   "dependencies": {
     "@graphql-codegen/cli": "^2.6.2",
     "apollo-link-http": "^1.5.17",
-    "dts-bundle": "^0.7.3",
     "graphql": "^16.3.0",
     "y18n": "^5.0.8"
   }

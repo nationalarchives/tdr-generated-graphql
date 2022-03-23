@@ -15,26 +15,10 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".js"]
   },
-  plugins: [new DtsBundlePlugin()],
   output: {
     library: "tdr-generated-graphql",
     libraryTarget: "commonjs-module",
     filename: "index.js",
     path: path.resolve(__dirname, ".")
   }
-};
-
-function DtsBundlePlugin() {}
-DtsBundlePlugin.prototype.apply = function(compiler) {
-  compiler.plugin("done", function() {
-    var dts = require("dts-bundle");
-
-    dts.bundle({
-      name: "tdr",
-      main: "src/index.d.ts",
-      out: "../index.d.ts",
-      removeSource: true,
-      outputAsModuleFolder: true // to use npm in-package typings
-    });
-  });
 };

@@ -26,18 +26,12 @@ ThisBuild / description := "Classes to be used by the graphql client to communic
 ThisBuild / licenses := List("MIT" -> new URL("https://choosealicense.com/licenses/mit/"))
 ThisBuild / homepage := Some(url("https://github.com/nationalarchives/tdr-consignment-api-data"))
 
-s3acl := None
-s3sse := true
-ThisBuild / publishMavenStyle := true 
-
-ThisBuild / publishTo := {
-  val prefix = if (isSnapshot.value) "snapshots" else "releases"
-  Some(s3resolver.value(s"My ${prefix} S3 bucket", s3(s"tdr-$prefix-mgmt")))
-}
-
-
 resolvers +=
   "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+
+githubOwner := "nationalarchives"
+githubRepository := "tdr-generated-graphql"
+githubTokenSource := TokenSource.GitConfig("github.token")
 
 graphqlCodegenStyle := Apollo
 graphqlCodegenJson := JsonCodec.Circe

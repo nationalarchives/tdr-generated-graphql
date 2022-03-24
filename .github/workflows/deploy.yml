@@ -1,0 +1,37 @@
+name: TDR Deploy Generated Graphql
+on:
+  workflow_dispatch:
+env:
+  RUN_NUMBER: ${{ github.run_id }}${{ github.run_attempt }}
+  BRANCH_NAME: version-bump-${{ github.run_id }}${{ github.run_attempt }}
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Import GPG key
+        id: import_gpg
+        uses: crazy-max/ghaction-import-gpg@v4
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+      - run: |
+          npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
+          ./.github/scripts/deploy.sh
+        env:
+          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+      - name: Create Pull Request
+        uses: actions/github-script@v6
+        env:
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}
+        with:
+          script: |
+            const { repo, owner } = context.repo;
+            const result = await github.rest.pulls.create({
+              title: 'Version Bump from build number ${{ env.RUN_NUMBER }}',
+              owner,
+              repo,
+              head: '${{ env.BRANCH_NAME }}',
+              base: 'master'
+            });

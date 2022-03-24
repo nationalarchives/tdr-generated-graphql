@@ -1,40 +1,50 @@
 import Dependencies._
 import sbt.url
+import ReleaseTransformations._
 
-ThisBuild / version := (version in ThisBuild).value
 ThisBuild / organization := "uk.gov.nationalarchives"
 ThisBuild / organizationName := "National Archives"
 
 scalaVersion := "2.13.3"
 
-ThisBuild / scmInfo := Some(
+scmInfo := Some(
   ScmInfo(
     url("https://github.com/nationalarchives/tdr-generated-graphql"),
     "git@github.com:nationalarchives/tdr-generated-graphql.git"
   )
 )
-ThisBuild / developers := List(
+
+developers := List(
   Developer(
     id    = "SP",
     name  = "Sam Palmer",
     email = "sam.palmer@nationalarchives.gov.uk",
-    url   = url("http://tdr-transfer-integration.nationalarchives.gov.uk")
+    url   = url("https://github.com/nationalarchives/tdr-generated-grapqhl")
   )
 )
 
-ThisBuild / description := "Classes to be used by the graphql client to communicate with the TDR graphql API"
-ThisBuild / licenses := List("MIT" -> new URL("https://choosealicense.com/licenses/mit/"))
-ThisBuild / homepage := Some(url("https://github.com/nationalarchives/tdr-consignment-api-data"))
+description := "Classes to be used by the graphql client to communicate with the TDR graphql API"
+licenses := List("MIT" -> new URL("https://choosealicense.com/licenses/mit/"))
+homepage := Some(url("https://github.com/nationalarchives/tdr-generated-grapqhl"))
 
-s3acl := None
-s3sse := true
-ThisBuild / publishMavenStyle := true 
+useGpgPinentry := true
+publishTo := sonatypePublishToBundle.value
+publishMavenStyle := true
 
-ThisBuild / publishTo := {
-  val prefix = if (isSnapshot.value) "snapshots" else "releases"
-  Some(s3resolver.value(s"My ${prefix} S3 bucket", s3(s"tdr-$prefix-mgmt")))
-}
-
+releaseProcess := Seq[ReleaseStep](
+  checkSnapshotDependencies,
+  inquireVersions,
+  runClean,
+  runTest,
+  setReleaseVersion,
+  commitReleaseVersion,
+  tagRelease,
+  releaseStepCommand("publishSigned"),
+  releaseStepCommand("sonatypeBundleRelease"),
+  setNextVersion,
+  commitNextVersion,
+  pushChanges
+)
 
 resolvers +=
   "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"

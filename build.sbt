@@ -1,5 +1,6 @@
 import Dependencies._
 import sbt.url
+import ReleaseTransformations._
 
 ThisBuild / version := (version in ThisBuild).value
 ThisBuild / organization := "uk.gov.nationalarchives"
@@ -26,13 +27,26 @@ ThisBuild / description := "Classes to be used by the graphql client to communic
 ThisBuild / licenses := List("MIT" -> new URL("https://choosealicense.com/licenses/mit/"))
 ThisBuild / homepage := Some(url("https://github.com/nationalarchives/tdr-consignment-api-data"))
 
-ThisBuild / publishMavenStyle := true
-
-ThisBuild / pomIncludeRepository := { _ => false }
-ThisBuild / publishTo := sonatypePublishToBundle.value
-ThisBuild / publishMavenStyle := true
-
 useGpgPinentry := true
+publishTo := sonatypePublishToBundle.value
+ThisBuild / publishMavenStyle := true
+
+releaseProcess := Seq[ReleaseStep](
+  checkSnapshotDependencies,
+  inquireVersions,
+  runClean,
+  runTest,
+  setReleaseVersion,
+  commitReleaseVersion,
+  tagRelease,
+  // For non cross-build projects, use releaseStepCommand("publishSigned")
+  releaseStepCommandAndRemaining("+publishSigned"),
+  releaseStepCommand("sonatypeBundleRelease"),
+  setNextVersion,
+  commitNextVersion,
+  pushChanges
+)
+
 
 resolvers +=
   "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"

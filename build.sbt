@@ -39,14 +39,12 @@ releaseProcess := Seq[ReleaseStep](
   setReleaseVersion,
   commitReleaseVersion,
   tagRelease,
-  // For non cross-build projects, use releaseStepCommand("publishSigned")
-  releaseStepCommandAndRemaining("+publishSigned"),
+  releaseStepCommand("publishSigned"),
   releaseStepCommand("sonatypeBundleRelease"),
   setNextVersion,
   commitNextVersion,
   pushChanges
 )
-
 
 resolvers +=
   "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"

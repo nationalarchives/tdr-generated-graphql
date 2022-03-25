@@ -10,6 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: gh workflow run deploy.yml
+      - run: gh workflow run deploy.yml --ref publish-to-sonatype
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}

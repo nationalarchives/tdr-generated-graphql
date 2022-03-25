@@ -17,4 +17,6 @@ jobs:
           ./.github/scripts/deploy.sh
         env:
           BRANCH_NAME: version-bump-${{ github.run_id }}${{ github.run_attempt }}
+          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
 

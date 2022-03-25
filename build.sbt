@@ -14,6 +14,15 @@ scmInfo := Some(
   )
 )
 
+developers := List(
+  Developer(
+    id    = "SP",
+    name  = "Sam Palmer",
+    email = "sam.palmer@nationalarchives.gov.uk",
+    url   = url("https://github.com/nationalarchives/tdr-generated-grapqhl")
+  )
+)
+
 description := "Classes to be used by the graphql client to communicate with the TDR graphql API"
 licenses := List("MIT" -> new URL("https://choosealicense.com/licenses/mit/"))
 homepage := Some(url("https://github.com/nationalarchives/tdr-generated-grapqhl"))

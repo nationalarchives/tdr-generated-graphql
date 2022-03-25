@@ -1,7 +1,6 @@
 name: TDR Deploy API
 on:
   workflow_dispatch:
-  push:
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -14,7 +13,7 @@ jobs:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
       - run: |
-          npm config set //registry.npmjs.org/:_authToken=${{ secrets.LOGIN_TOKEN }}
+          npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
           ./.github/scripts/deploy.sh
         env:
           BRANCH_NAME: version-bump-${{ github.run_id }}${{ github.run_attempt }}

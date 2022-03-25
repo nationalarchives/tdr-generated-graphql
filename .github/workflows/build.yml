@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - publish-to-sonatype
 jobs:
   deploy:
     if: !startsWith( github.event.commits[0].message, "Version Bump from build number")

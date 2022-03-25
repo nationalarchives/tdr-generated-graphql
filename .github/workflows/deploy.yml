@@ -1,0 +1,19 @@
+name: TDR Deploy API
+on:
+  workflow_dispatch:
+permissions:
+  id-token: write
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          git checkout $BRANCH_NAME
+          git push -u origin $BRANCH_NAME
+          mkdir -p src/main/resources
+          wget -O src/main/resources/schema.graphql https://raw.githubusercontent.com/nationalarchives/tdr-consignment-api/master/schema.graphql
+        env:
+          BRANCH_NAME: version-bump-${{ github.run_id }}${{ github.run_attempt }}
+

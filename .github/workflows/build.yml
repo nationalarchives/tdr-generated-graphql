@@ -1,0 +1,14 @@
+name: TDR Tag and pre deploy
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    if: !startsWith( github.event.commits[0].message, "Version Bump from build number")
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: gh workflow run deploy.yml
+        env:
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}

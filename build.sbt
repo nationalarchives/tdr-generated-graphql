@@ -2,34 +2,25 @@ import Dependencies._
 import sbt.url
 import ReleaseTransformations._
 
-ThisBuild / version := (version in ThisBuild).value
 ThisBuild / organization := "uk.gov.nationalarchives"
 ThisBuild / organizationName := "National Archives"
 
 scalaVersion := "2.13.3"
 
-ThisBuild / scmInfo := Some(
+scmInfo := Some(
   ScmInfo(
     url("https://github.com/nationalarchives/tdr-generated-graphql"),
     "git@github.com:nationalarchives/tdr-generated-graphql.git"
   )
 )
-ThisBuild / developers := List(
-  Developer(
-    id    = "SP",
-    name  = "Sam Palmer",
-    email = "sam.palmer@nationalarchives.gov.uk",
-    url   = url("http://tdr-transfer-integration.nationalarchives.gov.uk")
-  )
-)
 
-ThisBuild / description := "Classes to be used by the graphql client to communicate with the TDR graphql API"
-ThisBuild / licenses := List("MIT" -> new URL("https://choosealicense.com/licenses/mit/"))
-ThisBuild / homepage := Some(url("https://github.com/nationalarchives/tdr-consignment-api-data"))
+description := "Classes to be used by the graphql client to communicate with the TDR graphql API"
+licenses := List("MIT" -> new URL("https://choosealicense.com/licenses/mit/"))
+homepage := Some(url("https://github.com/nationalarchives/tdr-generated-grapqhl"))
 
 useGpgPinentry := true
 publishTo := sonatypePublishToBundle.value
-ThisBuild / publishMavenStyle := true
+publishMavenStyle := true
 
 releaseProcess := Seq[ReleaseStep](
   checkSnapshotDependencies,

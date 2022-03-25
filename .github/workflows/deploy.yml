@@ -1,11 +1,11 @@
 name: TDR Deploy Generated Graphql
 on:
   workflow_dispatch:
+env:
+  RUN_NUMBER: ${{ github.run_id }}${{ github.run_attempt }}
+  BRANCH_NAME: version-bump-${{ env.RUN_NUMBER }}
 jobs:
   deploy:
-    env:
-      RUN_NUMBER: ${{ github.run_id }}${{ github.run_attempt }}
-      BRANCH_NAME: version-bump-${{ env.RUN_NUMBER }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

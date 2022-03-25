@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 env:
   RUN_NUMBER: ${{ github.run_id }}${{ github.run_attempt }}
-  BRANCH_NAME: version-bump-${{ env.RUN_NUMBER }}
+  BRANCH_NAME: version-bump-${{ github.run_id }}${{ github.run_attempt }}
 jobs:
   deploy:
     runs-on: ubuntu-latest

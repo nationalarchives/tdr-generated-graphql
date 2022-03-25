@@ -5,6 +5,7 @@ jobs:
   deploy:
     env:
       RUN_NUMBER: ${{ github.run_id }}${{ github.run_attempt }}
+      BRANCH_NAME: version-bump-${{ env.RUN_NUMBER }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -18,7 +19,6 @@ jobs:
           npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
           ./.github/scripts/deploy.sh
         env:
-          BRANCH_NAME: version-bump-$RUN_NUMBER
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
       - name: Create Pull Request
@@ -32,6 +32,6 @@ jobs:
               title: 'Version Bump from build number ${{ env.RUN_NUMBER }}',
               owner,
               repo,
-              head: '${{ github.ref_name }}',
+              head: '${{ env.BRANCH_NAME }}',
               base: 'master'
             });

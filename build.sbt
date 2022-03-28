@@ -16,9 +16,9 @@ scmInfo := Some(
 
 developers := List(
   Developer(
-    id    = "SP",
-    name  = "Sam Palmer",
-    email = "sam.palmer@nationalarchives.gov.uk",
+    id    = "tna-digital-archiving-jenkins",
+    name  = "TNA Digital Archiving",
+    email = "digitalpreservation@nationalarchives.gov.uk",
     url   = url("https://github.com/nationalarchives/tdr-generated-grapqhl")
   )
 )

@@ -22,19 +22,9 @@ jobs:
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
       - name: Create Pull Request
-        uses: actions/github-script@v6
+        run: gh pr create --fill
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}
-        with:
-          script: |
-            const { repo, owner } = context.repo;
-            const result = await github.rest.pulls.create({
-              title: 'Version Bump from build number ${{ env.RUN_NUMBER }}',
-              owner,
-              repo,
-              head: '${{ env.BRANCH_NAME }}',
-              base: 'master'
-            });
       - name: Send success message
         uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@main
         with:

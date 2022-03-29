@@ -7,6 +7,6 @@ jobs:
     if: github.event.pull_request.merged == false
     steps:
       - uses: actions/checkout@v2
-      - run: echo ${{ github.event.label.name }}
+      - run: echo ${{ github.event.labels[0].name }}
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}

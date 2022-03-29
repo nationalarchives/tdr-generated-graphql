@@ -1,14 +1,12 @@
 name: Deploy if not a version bump PR
 on:
-  push:
-    branches:
-      - master
+  pull_request:
 jobs:
   deploy:
-    if: ${{ !contains( github.event.commits[0].message, 'Setting version to') }}
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == false
     steps:
       - uses: actions/checkout@v2
-      - run: gh workflow run deploy.yml
+      - run: echo ${{ github.event.label.name }}
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}

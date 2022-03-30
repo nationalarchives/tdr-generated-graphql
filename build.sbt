@@ -5,7 +5,7 @@ import ReleaseTransformations._
 ThisBuild / organization := "uk.gov.nationalarchives"
 ThisBuild / organizationName := "National Archives"
 
-scalaVersion := "2.13.3"
+scalaVersion := "2.13.8"
 
 scmInfo := Some(
   ScmInfo(

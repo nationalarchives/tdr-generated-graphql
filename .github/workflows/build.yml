@@ -10,6 +10,6 @@ jobs:
     if: ${{ github.event.pull_request.merged == true && !contains(github.event.pull_request.labels.*.name, 'Version bump') }}
     steps:
       - uses: actions/checkout@v2
-      - run: echo ${{ github.event.pull_request.labels[0].name }}
+      - run: gh workflow run deploy.yml
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}

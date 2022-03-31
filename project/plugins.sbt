@@ -1,4 +1,4 @@
-addSbtPlugin("rocks.muki" % "sbt-graphql" % "0.13.2")
+addSbtPlugin("rocks.muki" % "sbt-graphql" % "0.16.0")
 addSbtPlugin("com.github.sbt" % "sbt-release" % "1.1.0")
 resolvers += Resolver.jcenterRepo
 addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "3.9.12")

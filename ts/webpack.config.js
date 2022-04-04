@@ -16,8 +16,9 @@ module.exports = {
     extensions: [".ts", ".js"]
   },
   output: {
-    library: "tdr-generated-graphql",
-    libraryTarget: "commonjs-module",
+    library: {
+      type: "commonjs2"
+    },
     filename: "index.js",
     path: path.resolve(__dirname, ".")
   }

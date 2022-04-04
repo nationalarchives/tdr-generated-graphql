@@ -1,0 +1,23 @@
+name: TDR Run Graphql Schema Check
+on:
+  pull_request:
+  push:
+    branches-ignore:
+      - master
+      - release-*
+jobs:
+  test:
+    runs-on:  ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: nationalarchives/tdr-github-actions/.github/actions/run-git-secrets@main
+      - uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@main
+        if: failure()
+        with:
+          message: ":warning: Secrets found in repository ${{ inputs.repo-name }}"
+          slack-url: ${{ secrets.SLACK_WEBHOOK }}
+      - name: Check schema
+        run: |
+          mkdir -p src/main/resources/
+          wget -O src/main/resources/schema.graphql https://raw.githubusercontent.com/nationalarchives/tdr-consignment-api/master/schema.graphql
+          sbt graphqlCodegen

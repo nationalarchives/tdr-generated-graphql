@@ -1,0 +1,3 @@
+mutation updateConsignmentSeriesId($updateConsginmentSeriesIdInput: UpdateConsignmentSeriesIdInput!) {
+    updateConsignmentSeriesId(updateConsignmentSeriesId: $updateConsginmentSeriesIdInput)
+}

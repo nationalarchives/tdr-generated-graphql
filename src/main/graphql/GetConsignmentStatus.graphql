@@ -1,9 +1,14 @@
 query getConsignmentStatus($consignmentId: UUID!) {
     getConsignment(consignmentid: $consignmentId) {
+        series {
+            seriesid
+            code
+        }
         currentStatus {
-          transferAgreement
-          upload
-          confirmTransfer
+            series
+            transferAgreement
+            upload
+            confirmTransfer
         }
     }
 }

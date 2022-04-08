@@ -1,5 +1,5 @@
-mutation addFileMetadata($addFileMetadataInput: AddFileMetadataInput!) {
-    addFileMetadata(addFileMetadataInput: $addFileMetadataInput) {
+mutation addFileMetadata($addFileMetadataWithFileIdInput: AddFileMetadataWithFileIdInput!) {
+    addFileMetadata(addFileMetadataWithFileIdInput: $addFileMetadataWithFileIdInput) {
         fileId,
         value
     }

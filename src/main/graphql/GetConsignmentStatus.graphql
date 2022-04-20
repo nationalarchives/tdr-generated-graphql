@@ -9,6 +9,7 @@ query getConsignmentStatus($consignmentId: UUID!) {
             transferAgreement
             upload
             confirmTransfer
+            export
         }
     }
 }

@@ -1,0 +1,10 @@
+mutation addConsignmentStatus($addConsignmentStatusInput: ConsignmentStatusInput!) {
+  addConsignmentStatus(addConsignmentStatusInput: $addConsignmentStatusInput) {
+    consignmentStatusId
+    consignmentId
+    statusType
+    value
+    createdDatetime
+    modifiedDatetime
+  }
+}

@@ -3,3 +3,6 @@ target/
 src/main/resources/schema.graphql
 index.ts
 index.d.ts
+.DS_Store
+.bsp/
+ts/.DS_Store

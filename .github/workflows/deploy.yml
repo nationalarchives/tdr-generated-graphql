@@ -22,6 +22,10 @@ jobs:
         with:
           path: ts
       - run: ./.github/scripts/setup.sh
+      - run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_and_modified_files }}; do
+            echo "$file was added"
+          done
       - if: steps.ts-files-changed.outputs.any_modified == 'true'
         run: |
           ./.github/scripts/deploy_npm.sh ${{ secrets.NPM_TOKEN }}

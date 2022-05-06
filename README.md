@@ -34,8 +34,12 @@ See the following blog post for more information on `npm link` and instructions 
 
 ### Releasing
 * Commit and push the new query file that sits in `src/main/graphql`
-* Open a pull request, and merge to master once it has been reviewed.
-* The test build will trigger the deploy job which will publish the latest version of the library.
+* Open a pull request.
+* A job will run which will check to see if the changes are only within the `ts` directory. If they are, the `ts-only` label is added to the pull request.
+* If the pull request later changes to include other changes, the `ts-only` label is removed.
+* Merge the pull request to master once it has been reviewed.
+* If the PR has the `ts-only` label, the updated package is deployed to npm but not to maven.
+* If the PR doesn't have the `ts-only label`, updated packages are deployed to npm and maven.
 
 #### To Run Jenkins Manually
 * Go to the [TDR Graphql Code Generation](https://jenkins.tdr-management.nationalarchives.gov.uk/job/TDR%20Graphql%20Code%20Generation/) job in Jenkins. 

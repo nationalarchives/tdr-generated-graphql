@@ -10,6 +10,6 @@ jobs:
     if: ${{ github.event.pull_request.merged == true && !contains(github.event.pull_request.labels.*.name, 'Version bump') }}
     steps:
       - uses: actions/checkout@v2
-      - run: gh workflow run deploy.yml ${{ contains(github.event.pull_request.labels.*.name, 'ts-only') }}
+      - run: gh workflow run deploy.yml ${{ contains(github.event.pull_request.labels.*.name, 'ts-only') }} --ref split-npm-and-sbt-deploy
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}

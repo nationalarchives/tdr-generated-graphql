@@ -10,6 +10,10 @@ jobs:
     if: ${{ github.event.pull_request.merged == true && !contains(github.event.pull_request.labels.*.name, 'Version bump') }}
     steps:
       - uses: actions/checkout@v2
-      - run: gh workflow run deploy.yml
+      - id: ts-files-changed
+        uses: tj-actions/changed-files@v19
+        with:
+          path: ts
+      - run: gh workflow run deploy.yml -f npm-only=${{ steps.ts-files-changed.outputs.any_modified }} --ref split-npm-and-sbt-deploy
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}

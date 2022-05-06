@@ -1,6 +1,12 @@
 name: TDR Deploy Generated Graphql
 on:
   workflow_dispatch:
+    inputs:
+      npm-only:
+        default: false
+        description: Whether to deploy to npm only
+        required: false
+        type: boolean
 env:
   RUN_NUMBER: ${{ github.run_id }}${{ github.run_attempt }}
   BRANCH_NAME: version-bump-${{ github.run_id }}${{ github.run_attempt }}
@@ -17,19 +23,11 @@ jobs:
           git_commit_gpgsign: true
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
-      - id: ts-files-changed
-        uses: tj-actions/changed-files@v19
-        with:
-          path: ts
       - run: ./.github/scripts/setup.sh
-      - run: |
-          for file in ${{ steps.changed-files.outputs.all_changed_and_modified_files }}; do
-            echo "$file was added"
-          done
-      - if: steps.ts-files-changed.outputs.any_modified == 'true'
+      - if: ${{ github.event.inputs.npm-only == 'true' }}
         run: |
           ./.github/scripts/deploy_npm.sh ${{ secrets.NPM_TOKEN }}
-      - if: steps.ts-files-changed.outputs.any_modified == 'false'
+      - if: ${{ github.event.inputs.npm-only == 'false' }}
         run: |
           sbt 'release with-defaults'
         env:

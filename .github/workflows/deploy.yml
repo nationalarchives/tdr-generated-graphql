@@ -2,7 +2,7 @@ name: TDR Deploy Generated Graphql
 on:
   workflow_dispatch:
     inputs:
-      npm-only:
+      ts-only:
         default: false
         description: Whether to deploy to npm only
         required: false
@@ -24,10 +24,10 @@ jobs:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
       - run: ./.github/scripts/setup.sh
-      - if: ${{ github.event.inputs.npm-only == 'true' }}
+      - if: ${{ github.event.inputs.ts-only == 'true' }}
         run: |
           ./.github/scripts/deploy_npm.sh ${{ secrets.NPM_TOKEN }}
-      - if: ${{ github.event.inputs.npm-only == 'false' }}
+      - if: ${{ github.event.inputs.ts-only == 'false' }}
         run: |
           sbt 'release with-defaults'
         env:

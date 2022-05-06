@@ -13,7 +13,7 @@ jobs:
       - id: ts-files-changed
         uses: tj-actions/changed-files@v19
         with:
-          path: ts
-      - run: gh workflow run deploy.yml -f npm-only=${{ steps.ts-files-changed.outputs.any_modified }} --ref split-npm-and-sbt-deploy
+          files: ts
+      - run: gh workflow run deploy.yml -f npm-only=${{ steps.ts-files-changed.outputs.only_modified }} --ref split-npm-and-sbt-deploy
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}

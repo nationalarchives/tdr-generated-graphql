@@ -13,6 +13,7 @@ jobs:
       - id: ts-files-changed
         uses: tj-actions/changed-files@v19
         with:
+          fetch-depth: 2
           sha: ${{ github.event.pull_request.head.sha }}
           files: ts
       - run: echo ${{ steps.ts-files-changed.outputs.only_modified }}

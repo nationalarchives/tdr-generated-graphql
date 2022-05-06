@@ -17,9 +17,17 @@ jobs:
           git_commit_gpgsign: true
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
-      - run: |
-          npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
-          ./.github/scripts/deploy.sh
+      - id: ts-files-changed
+        uses: tj-actions/changed-files@v19
+        with:
+          files: ts
+      - run: ./.github/scripts/setup.sh
+      - if: steps.ts-files-changed.outputs.any_modified == 'true'
+        run: |
+          ./.github/scripts/deploy_npm.sh ${{ secrets.NPM_TOKEN }}
+      - if: steps.ts-files-changed.outputs.any_modified == 'false'
+        run: |
+          sbt 'release with-defaults'
         env:
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}

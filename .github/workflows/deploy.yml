@@ -20,7 +20,7 @@ jobs:
       - id: ts-files-changed
         uses: tj-actions/changed-files@v19
         with:
-          files: ts
+          path: ts
       - run: ./.github/scripts/setup.sh
       - if: steps.ts-files-changed.outputs.any_modified == 'true'
         run: |

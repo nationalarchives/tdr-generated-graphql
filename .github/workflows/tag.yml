@@ -14,3 +14,7 @@ jobs:
         run: gh pr edit ${{ github.event.number }} --add-label ts-only
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}
+      - if: ${{ steps.ts-files-changed.outputs.only_modified == 'false' }}
+        run: gh pr edit ${{ github.event.number }} --remove-label ts-only
+        env:
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}

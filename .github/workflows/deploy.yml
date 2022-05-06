@@ -24,8 +24,7 @@ jobs:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
       - run: ./.github/scripts/setup.sh
-      - if: ${{ github.event.inputs.ts-only == 'true' }}
-        run: |
+      - run: |
           ./.github/scripts/deploy_npm.sh ${{ secrets.NPM_TOKEN }}
       - if: ${{ github.event.inputs.ts-only == 'false' }}
         run: |

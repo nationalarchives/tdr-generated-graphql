@@ -11,3 +11,5 @@ jobs:
           files: ts
       - if: ${{ steps.ts-files-changed.outputs.only_modified == 'true' }}
         run: gh pr edit ${{ github.event.number }} --add-label ts-only
+        env:
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}

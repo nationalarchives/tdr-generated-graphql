@@ -1,0 +1,13 @@
+on:
+  pull_request:
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - id: ts-files-changed
+        uses: tj-actions/changed-files@v19
+        with:
+          files: ts
+      - if: ${{ steps.ts-files-changed.outputs.only_modified == 'true' }}
+        run: gh pr edit ${{ github.event.number }} --add-label ts-only

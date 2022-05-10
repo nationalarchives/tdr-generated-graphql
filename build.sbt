@@ -7,6 +7,12 @@ ThisBuild / organizationName := "National Archives"
 
 scalaVersion := "2.13.8"
 
+lazy val setLatestTagOutput = taskKey[Unit]("Sets a GitHub actions output for the latest tag")
+
+setLatestTagOutput := {
+  println(s"::set-output name=latest-tag::${(ThisBuild / version).value}")
+}
+
 scmInfo := Some(
   ScmInfo(
     url("https://github.com/nationalarchives/tdr-generated-graphql"),
@@ -37,6 +43,7 @@ releaseProcess := Seq[ReleaseStep](
   runClean,
   runTest,
   setReleaseVersion,
+  releaseStepTask(setLatestTagOutput),
   commitReleaseVersion,
   tagRelease,
   releaseStepCommand("publishSigned"),

@@ -38,19 +38,19 @@ publishTo := sonatypePublishToBundle.value
 publishMavenStyle := true
 
 releaseProcess := Seq[ReleaseStep](
-//  checkSnapshotDependencies,
-//  inquireVersions,
-//  runClean,
-//  runTest,
-//  setReleaseVersion,
+  checkSnapshotDependencies,
+  inquireVersions,
+  runClean,
+  runTest,
+  setReleaseVersion,
   releaseStepTask(setLatestTagOutput),
-//  commitReleaseVersion,
-//  tagRelease,
-//  releaseStepCommand("publishSigned"),
-//  releaseStepCommand("sonatypeBundleRelease"),
-//  setNextVersion,
-//  commitNextVersion,
-//  pushChanges
+  commitReleaseVersion,
+  tagRelease,
+  releaseStepCommand("publishSigned"),
+  releaseStepCommand("sonatypeBundleRelease"),
+  setNextVersion,
+  commitNextVersion,
+  pushChanges
 )
 
 resolvers +=

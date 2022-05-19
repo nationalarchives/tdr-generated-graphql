@@ -27,6 +27,11 @@ jobs:
       - run: |
           ./.github/scripts/deploy_npm.sh ${{ secrets.NPM_TOKEN }}
         id: npm-deploy
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@main
+        with:
+          path: packages/ts
       - if: ${{ github.event.inputs.ts-only == 'false' }}
         id: build
         run: |
@@ -47,5 +52,5 @@ jobs:
       - name: Send success message
         uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@main
         with:
-          message: ":white_check_mark: Generated graphql ${{ steps.npm-deploy.outputs.set-npm-version }} has been published to npm"
+          message: ":white_check_mark: Generated graphql ${{ steps.package-version.outputs.current-version}} has been published to npm"
           slack-url: ${{ secrets.SLACK_WEBHOOK }}

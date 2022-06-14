@@ -36,7 +36,6 @@
   },
   "dependencies": {
     "@graphql-codegen/cli": "^2.6.2",
-    "apollo-link-http": "^1.5.17",
     "graphql": "^16.5.0",
     "y18n": "^5.0.8"
   }

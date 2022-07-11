@@ -12,15 +12,7 @@ query closureMetadata($consignmentId: UUID!) {
         values {
             value
             dependencies {
-                name,
-                description,
-                fullName,
-                propertyType,
-                propertyGroup,
-                dataType,
-                editable,
-                multiValue,
-                defaultValue
+                name
             }
         }
     }

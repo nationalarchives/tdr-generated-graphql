@@ -1,5 +1,5 @@
-query closureMetadata($consignmentId: UUID!) {
-    closureMetadata(consignmentid: $consignmentId) {
+query customMetadata($consignmentId: UUID!) {
+    customMetadata(consignmentid: $consignmentId) {
         name,
         description,
         fullName,

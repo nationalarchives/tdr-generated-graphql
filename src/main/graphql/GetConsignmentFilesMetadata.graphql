@@ -1,0 +1,11 @@
+query getConsignmentFilesMetadata($consignmentId: UUID!, $fileFiltersInput: FileFilters) {
+    getConsignment(consignmentid: $consignmentId) {
+        files (fileFiltersInput: $fileFiltersInput) {
+            fileId
+            metadata {
+                foiExemptionCode
+            }
+        }
+        consignmentReference
+    }
+}

@@ -35,7 +35,7 @@
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
-    "@graphql-codegen/cli": "^2.10.0",
+    "@graphql-codegen/cli": "^2.11.2",
     "graphql": "^16.5.0",
     "y18n": "^5.0.8"
   }

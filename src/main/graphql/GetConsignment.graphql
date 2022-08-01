@@ -4,5 +4,6 @@ query getConsignment($consignmentId: UUID!) {
         seriesid
         parentFolder
         consignmentReference
+        parentFolderId
     }
 }

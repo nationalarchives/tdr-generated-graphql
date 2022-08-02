@@ -1,0 +1,23 @@
+query getConsignmentPaginatedFiles($consignmentId: UUID!, $paginatedInput: PaginationInput) {
+    getConsignment(consignmentid: $consignmentId) {
+        parentFolder
+        parentFolderId
+        paginatedFiles(paginationInput: $paginatedInput){
+            pageInfo {
+                startCursor,
+                endCursor,
+                hasNextPage,
+                hasPreviousPage
+            }
+            edges {
+                node {
+                    fileId
+                    fileName
+                    fileType
+                    parentId
+                }
+            }
+            totalPages
+        }
+    }
+}

@@ -1,0 +1,5 @@
+query getAllDescendantIds($getAllDescendantsInput: GetAllDescendantsInput!) {
+    getAllDescendants(getAllDescendantsInput: $getAllDescendantsInput) {
+        fileId
+    }
+}

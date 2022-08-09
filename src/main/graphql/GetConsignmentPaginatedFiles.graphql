@@ -18,6 +18,7 @@ query getConsignmentPaginatedFiles($consignmentId: UUID!, $paginatedInput: Pagin
                 }
             }
             totalPages
+            totalItems
         }
     }
 }

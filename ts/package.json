@@ -26,7 +26,7 @@
   "devDependencies": {
     "@graphql-codegen/introspection": "^2.2.1",
     "@graphql-codegen/typescript": "^2.7.3",
-    "@graphql-codegen/typescript-document-nodes": "^2.3.2",
+    "@graphql-codegen/typescript-document-nodes": "^2.3.3",
     "@graphql-codegen/typescript-graphql-files-modules": "^2.2.1",
     "@graphql-codegen/typescript-operations": "^2.5.3",
     "ts-loader": "^9.3.0",

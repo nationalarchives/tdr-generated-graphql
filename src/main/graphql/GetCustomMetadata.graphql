@@ -9,6 +9,7 @@ query customMetadata($consignmentId: UUID!) {
         editable,
         multiValue,
         defaultValue,
+        ordinal,
         values {
             value
             dependencies {

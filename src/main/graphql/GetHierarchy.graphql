@@ -1,0 +1,8 @@
+query fileHierarchy($fileId: UUID!) {
+    fileHierarchy(fileId: $fileId) {
+        fileId,
+        fileName,
+        fileType,
+        parentId
+    }
+}

@@ -1,5 +1,5 @@
-query getAllDescendantIds($getAllDescendantsInput: GetAllDescendantsInput!) {
-    getAllDescendants(getAllDescendantsInput: $getAllDescendantsInput) {
+query getAllDescendantIds($allDescendantsInput: AllDescendantsInput!) {
+    allDescendants(allDescendantsInput: $allDescendantsInput) {
         fileId
     }
 }

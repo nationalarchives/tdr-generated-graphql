@@ -1,0 +1,10 @@
+query getFilesForNavigation($consignmentId: UUID!) {
+  getConsignment(consignmentid: $consignmentId) {
+    files {
+      fileId
+      fileType
+      fileName
+      parentId
+    }
+  }
+}

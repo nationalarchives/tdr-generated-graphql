@@ -2,6 +2,8 @@ query getConsignmentFilesMetadata($consignmentId: UUID!, $fileFiltersInput: File
     getConsignment(consignmentid: $consignmentId) {
         files (fileFiltersInput: $fileFiltersInput) {
             fileId
+            fileName
+            fileType
             metadata {
                 foiExemptionCode
                 closurePeriod

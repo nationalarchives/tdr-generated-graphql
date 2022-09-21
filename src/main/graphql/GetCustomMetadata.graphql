@@ -15,6 +15,7 @@ query customMetadata($consignmentId: UUID!) {
             dependencies {
                 name
             }
+            uiOrdinal
         }
     }
 }

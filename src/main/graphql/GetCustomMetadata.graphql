@@ -17,5 +17,7 @@ query customMetadata($consignmentId: UUID!) {
             }
             uiOrdinal
         }
+        exportOrdinal
+        allowExport
     }
 }

@@ -1,0 +1,9 @@
+mutation addBulkFileMetadata($updateBulkFileMetadataInput: UpdateBulkFileMetadataInput!) {
+  updateBulkFileMetadata(updateBulkFileMetadataInput: $updateBulkFileMetadataInput) {
+    fileIds
+    metadataProperties {
+      value
+      filePropertyName
+    }
+  }
+}

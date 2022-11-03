@@ -12,6 +12,7 @@ query getConsignmentFilesMetadata($consignmentId: UUID!, $fileFiltersInput: File
                 closureStartDate
                 foiExemptionAsserted
                 titleClosed
+                descriptionClosed
             }
         }
         consignmentReference

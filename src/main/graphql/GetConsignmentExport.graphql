@@ -17,16 +17,9 @@ query getConsignmentForExport($consignmentId: UUID!) {
             fileType
             fileName
             originalFilePath
-            metadata {
-                clientSideFileSize,
-                clientSideLastModifiedDate,
-                clientSideOriginalFilePath,
-                foiExemptionCode,
-                heldBy,
-                language,
-                legalStatus,
-                rightsCopyright,
-                sha256ClientSideChecksum
+            fileMetadata {
+                name
+                value
             }
             ffidMetadata {
                 software

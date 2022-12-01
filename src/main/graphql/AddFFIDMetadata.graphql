@@ -1,4 +1,4 @@
-mutation addFFIDMetadata($addFFIDMetadataInput: FFIDMetadataInput!) {
+mutation addFFIDMetadata($addFFIDMetadataInput: FFIDMetadataInputValues!) {
     addFFIDMetadata(addFFIDMetadataInput: $addFFIDMetadataInput) {
         fileId
     }

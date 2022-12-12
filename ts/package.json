@@ -28,14 +28,14 @@
     "@graphql-codegen/typescript": "^2.8.2",
     "@graphql-codegen/typescript-document-nodes": "^2.3.8",
     "@graphql-codegen/typescript-graphql-files-modules": "^2.2.1",
-    "@graphql-codegen/typescript-operations": "^2.5.8",
+    "@graphql-codegen/typescript-operations": "^2.5.10",
     "ts-loader": "^9.3.0",
     "typescript": "^4.9.3",
     "webpack": "5.70.0",
     "webpack-cli": "^5.0.1"
   },
   "dependencies": {
-    "@graphql-codegen/cli": "^2.15.0",
+    "@graphql-codegen/cli": "^2.16.1",
     "graphql": "^16.6.0",
     "y18n": "^5.0.8"
   }

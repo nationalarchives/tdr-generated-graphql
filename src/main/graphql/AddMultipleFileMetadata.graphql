@@ -1,0 +1,6 @@
+mutation addMultipleFileMetadata($addMultipleFileMetadataInput: AddFileMetadataWithFileIdInput!) {
+    addMultipleFileMetadata(addMultipleFileMetadataInput: $addMultipleFileMetadataInput) {
+        fileId,
+        value
+    }
+}

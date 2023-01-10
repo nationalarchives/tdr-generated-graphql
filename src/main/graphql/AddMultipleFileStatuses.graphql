@@ -1,0 +1,7 @@
+mutation addMultipleFileStatuses($addMultipleFileStatusesInput: AddMultipleFileStatusesInput!){
+  addMultipleFileStatuses(addMultipleFileStatusesInput: $addMultipleFileStatusesInput) {
+    fileId
+    statusType
+    statusValue
+  }
+}

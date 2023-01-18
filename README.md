@@ -41,11 +41,13 @@ See the following blog post for more information on `npm link` and instructions 
 * If the PR has the `ts-only` label, the updated package is deployed to npm but not to maven.
 * If the PR doesn't have the `ts-only label`, updated packages are deployed to npm and maven.
 
-#### To Run Jenkins Manually
-* Go to the [TDR Graphql Code Generation](https://jenkins.tdr-management.nationalarchives.gov.uk/job/TDR%20Graphql%20Code%20Generation/) job in Jenkins. 
-* Click on 'Build with parameters'
-* Leave STAGE option as 'intg'
-* You can look at the console output when/after you run the jenkins build to help bug fix etc.
+#### To deploy Generated Graphql manually
+* Go to the [TDR Deploy Generated Graphql](https://github.com/nationalarchives/tdr-generated-graphql/actions/workflows/deploy.yml) on the GitHub Actions tab of this project.
+* Click on 'Run Workflow'.
+* Select green 'Run Workflow' button.
+* You should see the job running (if not, refresh the page).
+* Once it is complete (green tick), check the release [tags](https://github.com/nationalarchives/tdr-generated-graphql/tags) to see the new version.
+* It should take about 15-30 minutes until it is published to [Maven](https://repo1.maven.org/maven2/uk/gov/nationalarchives/tdr-generated-graphql_2.13/).
 
 ### TDR Documentation
 The full documentation for the TDR project can be found [here](https://github.com/nationalarchives/tdr-dev-documentation)

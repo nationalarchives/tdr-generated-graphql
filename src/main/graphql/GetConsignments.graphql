@@ -4,9 +4,15 @@ query getConsignments($limit: Int!, $currentCursor: String, $consignmentFiltersI
             node {
                 consignmentid
                 consignmentReference
+                consignmentType
                 exportDatetime
                 createdDatetime
                 currentStatus {
+                    series
+                    transferAgreement
+                    upload
+                    clientChecks
+                    confirmTransfer
                     export
                 }
                 totalFiles

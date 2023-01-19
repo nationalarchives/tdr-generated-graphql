@@ -48,6 +48,7 @@ See the following blog post for more information on `npm link` and instructions 
 * You should see the job running (if not, refresh the page).
 * Once it is complete (green tick), check the release [tags](https://github.com/nationalarchives/tdr-generated-graphql/tags) to see the new version.
 * It should take about 15-30 minutes until it is published to [Maven](https://repo1.maven.org/maven2/uk/gov/nationalarchives/tdr-generated-graphql_2.13/).
+  * **Note**: the new release version is often available before it appears on the Maven GUI.
 
 ### TDR Documentation
 The full documentation for the TDR project can be found [here](https://github.com/nationalarchives/tdr-dev-documentation)

@@ -9,6 +9,9 @@ query getConsignmentStatus($consignmentId: UUID!) {
             transferAgreement
             upload
             clientChecks
+            serverAntivirus
+            serverChecksum
+            serverFFID
             confirmTransfer
             export
         }

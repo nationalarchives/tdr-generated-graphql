@@ -12,6 +12,9 @@ query getConsignments($limit: Int!, $currentCursor: String, $consignmentFiltersI
                     transferAgreement
                     upload
                     clientChecks
+                    serverAntivirus
+                    serverChecksum
+                    serverFFID
                     confirmTransfer
                     export
                 }

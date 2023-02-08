@@ -8,6 +8,10 @@ query getConsignmentFiles($consignmentId: UUID!) {
             metadata {
                 clientSideOriginalFilePath
             }
+            fileStatuses {
+                statusType
+                statusValue
+            }
         }
     }
 }

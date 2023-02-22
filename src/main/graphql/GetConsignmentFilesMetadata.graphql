@@ -7,6 +7,10 @@ query getConsignmentFilesMetadata($consignmentId: UUID!, $fileFiltersInput: File
                 name
                 value
             }
+            fileStatuses {
+                statusType
+                statusValue
+            }
         }
         consignmentReference
     }

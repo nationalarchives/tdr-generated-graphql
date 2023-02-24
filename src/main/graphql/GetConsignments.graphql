@@ -7,16 +7,13 @@ query getConsignments($limit: Int!, $currentCursor: String, $consignmentFiltersI
                 consignmentType
                 exportDatetime
                 createdDatetime
-                currentStatus {
-                    series
-                    transferAgreement
-                    upload
-                    clientChecks
-                    serverAntivirus
-                    serverChecksum
-                    serverFFID
-                    confirmTransfer
-                    export
+                consignmentStatuses {
+                    consignmentStatusId
+                    consignmentId
+                    statusType
+                    value
+                    createdDatetime
+                    modifiedDatetime
                 }
                 totalFiles
             }

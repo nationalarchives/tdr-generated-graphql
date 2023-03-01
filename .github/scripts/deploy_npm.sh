@@ -10,4 +10,4 @@ git commit -m 'Update npm version'
 git push
 npm publish --access public
 cd ..
-echo ::set-output name=set-npm-version::$(awk '/version/{gsub(/("|",)/,"",$2);print $2}' ts/package.json)
+echo set-npm-version=$(awk '/version/{gsub(/("|",)/,"",$2);print $2}' ts/package.json) >> $GITHUB_OUTPUT

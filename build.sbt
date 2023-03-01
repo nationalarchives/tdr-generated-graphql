@@ -1,6 +1,7 @@
 import Dependencies._
 import sbt.url
 import ReleaseTransformations._
+import java.io.FileWriter
 
 ThisBuild / organization := "uk.gov.nationalarchives"
 ThisBuild / organizationName := "National Archives"
@@ -10,7 +11,9 @@ scalaVersion := "2.13.10"
 lazy val setLatestTagOutput = taskKey[Unit]("Sets a GitHub actions output for the latest tag")
 
 setLatestTagOutput := {
-  println(s"::set-output name=latest-tag::${(ThisBuild / version).value}")
+  val fileWriter = new FileWriter(sys.env("GITHUB_OUTPUT"), true)
+  fileWriter.write(s"latest-tag=${(ThisBuild / version).value}\n")
+  fileWriter.close()
 }
 
 scmInfo := Some(

@@ -1,4 +1,4 @@
-mutation addAntivirusMetadata($input: AddAntivirusMetadataInputValues!) {
+"""mutation addAntivirusMetadata($input: AddAntivirusMetadataInputValues!) {
     addAntivirusMetadata(addAntivirusMetadataInput: $input) {
         fileId
         software
@@ -7,4 +7,4 @@ mutation addAntivirusMetadata($input: AddAntivirusMetadataInputValues!) {
         result
         datetime
     }
-}
+}"""

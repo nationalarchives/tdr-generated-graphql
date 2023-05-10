@@ -1,7 +1,0 @@
-mutation addFileMetadata($addFileMetadataWithFileIdInput: AddFileMetadataWithFileIdInputValues!) {
-    addFileMetadata(addFileMetadataWithFileIdInput: $addFileMetadataWithFileIdInput) {
-        filePropertyName,
-        fileId,
-        value
-    }
-}

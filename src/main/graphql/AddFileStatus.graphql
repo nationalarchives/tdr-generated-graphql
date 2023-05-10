@@ -1,7 +1,0 @@
-mutation addFileStatus($addFileStatusInput: AddFileStatusInput!) {
-    addFileStatus(addFileStatusInput: $addFileStatusInput) {
-        fileId
-        statusType
-        statusValue
-    }
-}

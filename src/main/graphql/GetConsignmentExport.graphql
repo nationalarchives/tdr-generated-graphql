@@ -32,6 +32,8 @@ query getConsignmentForExport($consignmentId: UUID!) {
                     extension
                     identificationBasis
                     puid
+                    fileExtensionMismatch
+                    formatName
                 }
             }
             antivirusMetadata {

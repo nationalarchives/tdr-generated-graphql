@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@graphql-codegen/cli": "^5.0.0",
-    "graphql": "^16.8.0",
+    "graphql": "^16.8.1",
     "y18n": "^5.0.8"
   }
 }

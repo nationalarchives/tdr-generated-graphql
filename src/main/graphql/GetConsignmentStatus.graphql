@@ -1,9 +1,7 @@
 query getConsignmentStatus($consignmentId: UUID!) {
     getConsignment(consignmentid: $consignmentId) {
-        series {
-            seriesid
-            code
-        }
+        seriesid
+        seriesName
         consignmentStatuses {
             consignmentStatusId
             consignmentId

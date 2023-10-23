@@ -13,6 +13,8 @@ query getConsignmentForExport($consignmentId: UUID!) {
             fileId
             fileType
             fileName
+            fileReference
+            parentReference
             originalFilePath
             fileMetadata {
                 name

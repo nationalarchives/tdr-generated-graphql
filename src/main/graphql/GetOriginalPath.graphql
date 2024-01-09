@@ -1,5 +1,0 @@
-query getOriginalPath($fileId: UUID!) {
-    getClientFileMetadata(fileId: $fileId) {
-        originalPath
-    }
-}

@@ -1,6 +1,6 @@
 {
   "name": "@nationalarchives/tdr-generated-graphql",
-  "version": "1.0.444",
+  "version": "1.0.445",
   "description": "",
   "main": "index.ts",
   "scripts": {
@@ -25,10 +25,10 @@
   "homepage": "https://github.com/nationalarchives/tdr-generated-graphql#readme",
   "devDependencies": {
     "@graphql-codegen/introspection": "^4.0.2",
-    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript": "^4.0.6",
     "@graphql-codegen/typescript-document-nodes": "^4.0.4",
     "@graphql-codegen/typescript-graphql-files-modules": "^3.0.0",
-    "@graphql-codegen/typescript-operations": "^4.0.1",
+    "@graphql-codegen/typescript-operations": "^4.2.0",
     "ts-loader": "^9.3.0",
     "typescript": "^5.3.3",
     "webpack": "5.70.0",

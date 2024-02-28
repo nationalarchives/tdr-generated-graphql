@@ -24,7 +24,7 @@
   ],
   "homepage": "https://github.com/nationalarchives/tdr-generated-graphql#readme",
   "devDependencies": {
-    "@graphql-codegen/introspection": "^4.0.2",
+    "@graphql-codegen/introspection": "^4.0.3",
     "@graphql-codegen/typescript": "^4.0.6",
     "@graphql-codegen/typescript-document-nodes": "^4.0.4",
     "@graphql-codegen/typescript-graphql-files-modules": "^3.0.0",

@@ -5,6 +5,7 @@ query customMetadata($consignmentId: UUID!) {
         fullName,
         propertyType,
         propertyGroup,
+        propertyProtected,
         dataType,
         editable,
         multiValue,

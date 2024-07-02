@@ -28,7 +28,7 @@
     "@graphql-codegen/typescript": "^4.0.8",
     "@graphql-codegen/typescript-document-nodes": "^4.0.8",
     "@graphql-codegen/typescript-graphql-files-modules": "^3.0.0",
-    "@graphql-codegen/typescript-operations": "^4.2.2",
+    "@graphql-codegen/typescript-operations": "^4.2.3",
     "ts-loader": "^9.3.0",
     "typescript": "^5.5.2",
     "webpack": "5.70.0",

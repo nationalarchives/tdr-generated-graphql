@@ -1,0 +1,7 @@
+query getConsignmentsForMetadataReview {
+    getConsignmentsForMetadataReview {
+        consignmentReference,
+        seriesName,
+        transferringBodyName
+    }
+}

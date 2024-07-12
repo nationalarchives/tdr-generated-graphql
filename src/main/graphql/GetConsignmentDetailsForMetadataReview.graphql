@@ -1,0 +1,8 @@
+query getConsignmentDetailsForMetadataReview($consignmentId: UUID!) {
+    getConsignment(consignmentid: $consignmentId) {
+        consignmentReference,
+        seriesName,
+        transferringBodyName,
+        userid
+    }
+}

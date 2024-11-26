@@ -2,5 +2,6 @@ mutation addConsignment($addConsignmentInput: AddConsignmentInput!) {
     addConsignment(addConsignmentInput: $addConsignmentInput) {
         consignmentid
         seriesid
+        consignmentReference
     }
 }

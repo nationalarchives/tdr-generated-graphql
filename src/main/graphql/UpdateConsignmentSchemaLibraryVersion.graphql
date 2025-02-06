@@ -1,0 +1,4 @@
+mutation updateConsignmentSchemaLibraryVersion($updateSchemaLibraryVersionInput: UpdateSchemaLibraryVersionInput!) {
+    updateConsignmentSchemaLibraryVersion(updateSchemaLibraryVersion:$updateSchemaLibraryVersionInput)
+}
+

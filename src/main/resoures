@@ -1,0 +1,505 @@
+input AddAntivirusMetadataInput {
+  antivirusMetadata: [AddAntivirusMetadataInputValues!]!
+}
+
+input AddAntivirusMetadataInputValues {
+  fileId: UUID!
+  software: String!
+  softwareVersion: String!
+  databaseVersion: String!
+  result: String!
+  datetime: Long!
+}
+
+input AddConsignmentInput {
+  seriesid: UUID
+  consignmentType: String!
+}
+
+input AddFileAndMetadataInput {
+  consignmentId: UUID!
+  metadataInput: [ClientSideMetadataInput!]!
+  emptyDirectories: [String!] = []
+}
+
+input AddFileMetadataWithFileIdInput {
+  metadataInputValues: [AddFileMetadataWithFileIdInputValues!]!
+}
+
+input AddFileMetadataWithFileIdInputValues {
+  filePropertyName: String!
+  fileId: UUID!
+  value: String!
+}
+
+input AddFileStatusInput {
+  fileId: UUID!
+  statusType: String!
+  statusValue: String!
+}
+
+input AddFinalTransferConfirmationInput {
+  consignmentId: UUID!
+  legalCustodyTransferConfirmed: Boolean!
+}
+
+input AddMultipleFileStatusesInput {
+  statuses: [AddFileStatusInput!]!
+}
+
+input AddOrUpdateBulkFileMetadataInput {
+  consignmentId: UUID!
+  fileMetadata: [AddOrUpdateFileMetadata!]!
+  skipValidation: Boolean = false
+}
+
+input AddOrUpdateFileMetadata {
+  fileId: UUID!
+  metadata: [AddOrUpdateMetadata!]!
+}
+
+input AddOrUpdateMetadata {
+  filePropertyName: String!
+  value: String!
+}
+
+input AddTransferAgreementComplianceInput {
+  consignmentId: UUID!
+  appraisalSelectionSignedOff: Boolean!
+  initialOpenRecords: Boolean
+  sensitivityReviewSignedOff: Boolean!
+}
+
+input AddTransferAgreementPrivateBetaInput {
+  consignmentId: UUID!
+  allPublicRecords: Boolean!
+  allCrownCopyright: Boolean!
+  allEnglish: Boolean
+}
+
+input AllDescendantsInput {
+  consignmentId: UUID!
+  parentIds: [UUID!]!
+}
+
+type AntivirusMetadata {
+  fileId: UUID!
+  software: String!
+  softwareVersion: String!
+  databaseVersion: String!
+  result: String!
+  datetime: Long!
+}
+
+type AntivirusProgress {
+  filesProcessed: Int!
+}
+
+type BulkFileMetadata {
+  fileIds: [UUID!]!
+  metadataProperties: [FileMetadata!]!
+}
+
+type ChecksumProgress {
+  filesProcessed: Int!
+}
+
+input ClientSideMetadataInput {
+  originalPath: String!
+  checksum: String!
+  lastModified: Long!
+  fileSize: Long!
+  matchId: Long!
+}
+
+type Consignment {
+  consignmentid: UUID
+  userid: UUID!
+  seriesid: UUID
+  createdDatetime: ZonedDateTime
+  transferInitiatedDatetime: ZonedDateTime
+  exportDatetime: ZonedDateTime
+  exportLocation: String
+  consignmentType: String
+  includeTopLevelFolder: Boolean
+  seriesName: String
+  transferringBodyName: String
+  transferringBodyTdrCode: String
+  metadataSchemaLibraryVersion: String
+  allChecksSucceeded: Boolean!
+  totalFiles: Int!
+  totalFileSize: Long!
+  fileChecks: FileChecks!
+  parentFolder: String
+  parentFolderId: UUID
+  files(fileFiltersInput: FileFilters): [File!]!
+  paginatedFiles(paginationInput: PaginationInput): FileConnection!
+  consignmentReference: String!
+  consignmentStatuses: [ConsignmentStatus!]!
+}
+
+"A connection to a list of items."
+type ConsignmentConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo!
+
+  "A list of edges."
+  edges: [ConsignmentEdge]
+  totalPages(limit: Int!, consignmentFiltersInput: ConsignmentFilters): Int
+}
+
+"An edge in a connection."
+type ConsignmentEdge {
+  "The item at the end of the edge."
+  node: Consignment!
+
+  "A cursor for use in pagination."
+  cursor: String!
+}
+
+input ConsignmentFilters {
+  userId: UUID
+  consignmentType: String
+}
+
+type ConsignmentStatus {
+  consignmentStatusId: UUID!
+  consignmentId: UUID!
+  statusType: String!
+  value: String!
+  createdDatetime: ZonedDateTime!
+  modifiedDatetime: ZonedDateTime
+}
+
+input ConsignmentStatusInput {
+  consignmentId: UUID!
+  statusType: String!
+  statusValue: String
+}
+
+type CustomMetadataField {
+  name: String!
+  fullName: String
+  description: String
+  propertyType: PropertyType!
+  propertyGroup: String
+  dataType: DataType!
+  editable: Boolean!
+  multiValue: Boolean!
+  defaultValue: String
+  values: [CustomMetadataValues!]!
+  uiOrdinal: Int!
+  allowExport: Boolean!
+  exportOrdinal: Int
+}
+
+type CustomMetadataValues {
+  dependencies: [CustomMetadataField!]!
+  value: String!
+  uiOrdinal: Int!
+}
+
+enum DataType {
+  Boolean
+  DateTime
+  Decimal
+  Integer
+  Text
+}
+
+type DeleteFileMetadata {
+  fileIds: [UUID!]!
+  filePropertyNames: [String!]!
+}
+
+input DeleteFileMetadataInput {
+  fileIds: [UUID!]!
+  propertyNames: [String!]!
+  consignmentId: UUID!
+}
+
+type DisplayAttribute {
+  attribute: String!
+  value: String
+  type: DataType!
+}
+
+type DisplayPropertyField {
+  propertyName: String!
+  attributes: [DisplayAttribute!]!
+}
+
+type FFIDMetadata {
+  fileId: UUID!
+  software: String!
+  softwareVersion: String!
+  binarySignatureFileVersion: String!
+  containerSignatureFileVersion: String!
+  method: String!
+  matches: [FFIDMetadataMatches!]!
+  datetime: Long!
+}
+
+input FFIDMetadataInput {
+  metadataInputValues: [FFIDMetadataInputValues!]!
+}
+
+input FFIDMetadataInputMatches {
+  extension: String
+  identificationBasis: String!
+  puid: String
+  fileExtensionMismatch: Boolean = false
+  formatName: String = ""
+}
+
+input FFIDMetadataInputValues {
+  fileId: UUID!
+  software: String!
+  softwareVersion: String!
+  binarySignatureFileVersion: String!
+  containerSignatureFileVersion: String!
+  method: String!
+  matches: [FFIDMetadataInputMatches!]!
+}
+
+type FFIDMetadataMatches {
+  extension: String
+  identificationBasis: String!
+  puid: String
+  fileExtensionMismatch: Boolean
+  formatName: String
+}
+
+type FFIDProgress {
+  filesProcessed: Int!
+}
+
+type File {
+  fileId: UUID!
+  fileType: String
+  fileName: String
+  fileReference: String
+  parentId: UUID
+  parentReference: String
+  metadata: FileMetadataValues!
+  fileStatus: String @deprecated(reason: "Should use 'fileStatuses' field")
+  ffidMetadata: FFIDMetadata
+  antivirusMetadata: AntivirusMetadata
+  originalFilePath: String
+  fileMetadata: [FileMetadataValue!]!
+  fileStatuses: [FileStatus!]!
+}
+
+type FileChecks {
+  antivirusProgress: AntivirusProgress!
+  checksumProgress: ChecksumProgress!
+  ffidProgress: FFIDProgress!
+}
+
+"A connection to a list of items."
+type FileConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo!
+
+  "A list of edges."
+  edges: [FileEdge]
+  totalPages: Int
+  totalItems: Int
+}
+
+"An edge in a connection."
+type FileEdge {
+  "The item at the end of the edge."
+  node: File!
+
+  "A cursor for use in pagination."
+  cursor: String!
+}
+
+input FileFilters {
+  fileTypeIdentifier: String
+  selectedFileIds: [UUID!]
+  parentId: UUID
+  metadataFilters: FileMetadataFilters
+}
+
+type FileMatches {
+  fileId: UUID!
+  matchId: Long!
+}
+
+type FileMetadata {
+  filePropertyName: String!
+  value: String!
+}
+
+input FileMetadataFilters {
+  closureMetadata: Boolean = false
+  descriptiveMetadata: Boolean = false
+  properties: [String!]
+}
+
+type FileMetadataValue {
+  name: String!
+  value: String!
+}
+
+type FileMetadataValues {
+  sha256ClientSideChecksum: String
+  clientSideOriginalFilePath: String
+  clientSideLastModifiedDate: LocalDateTime
+  clientSideFileSize: Long
+  rightsCopyright: String
+  legalStatus: String
+  heldBy: String
+  language: String
+  foiExemptionCode: String
+  closurePeriod: Int
+  closureStartDate: LocalDateTime
+  foiExemptionAsserted: LocalDateTime
+  titleClosed: Boolean
+  descriptionClosed: Boolean
+}
+
+type FileMetadataWithFileId {
+  filePropertyName: String!
+  fileId: UUID!
+  value: String!
+}
+
+type FileStatus {
+  fileId: UUID!
+  statusType: String!
+  statusValue: String!
+}
+
+type FinalTransferConfirmation {
+  consignmentId: UUID!
+  legalCustodyTransferConfirmed: Boolean!
+}
+
+scalar LocalDateTime
+
+"The `Long` scalar type represents non-fractional signed whole numeric values. Long can represent values between -(2^63) and 2^63 - 1."
+scalar Long
+
+type Mutation {
+  addConsignment(addConsignmentInput: AddConsignmentInput!): Consignment!
+  updateTransferInitiated(consignmentid: UUID!): Int
+  updateExportData(exportData: UpdateExportDataInput!): Int
+  startUpload(startUploadInput: StartUploadInput!): String!
+  updateConsignmentSeriesId(updateConsignmentSeriesId: UpdateConsignmentSeriesIdInput!): Int
+  updateConsignmentMetadataSchemaLibraryVersion(updateMetadataSchemaLibraryVersion: UpdateMetadataSchemaLibraryVersionInput!): Int
+  addTransferAgreementPrivateBeta(addTransferAgreementPrivateBetaInput: AddTransferAgreementPrivateBetaInput!): TransferAgreementPrivateBeta!
+  addTransferAgreementCompliance(addTransferAgreementComplianceInput: AddTransferAgreementComplianceInput!): TransferAgreementCompliance!
+  addFilesAndMetadata(addFilesAndMetadataInput: AddFileAndMetadataInput!): [FileMatches!]!
+  addConsignmentStatus(addConsignmentStatusInput: ConsignmentStatusInput!): ConsignmentStatus!
+  updateConsignmentStatus(updateConsignmentStatusInput: ConsignmentStatusInput!): Int
+  addBulkAntivirusMetadata(addBulkAntivirusMetadataInput: AddAntivirusMetadataInput!): [AntivirusMetadata!]!
+  addMultipleFileMetadata(addMultipleFileMetadataInput: AddFileMetadataWithFileIdInput!): [FileMetadataWithFileId!]!
+  updateBulkFileMetadata(updateBulkFileMetadataInput: UpdateBulkFileMetadataInput!): BulkFileMetadata! @deprecated(reason: "Use addOrUpdateBulkFileMetadata(addOrUpdateBulkFileMetadataInput: AddOrUpdateBulkFileMetadataInput!) instead")
+  addOrUpdateBulkFileMetadata(addOrUpdateBulkFileMetadataInput: AddOrUpdateBulkFileMetadataInput!): [FileMetadataWithFileId!]!
+  deleteFileMetadata(deleteFileMetadataInput: DeleteFileMetadataInput!): DeleteFileMetadata!
+  addBulkFFIDMetadata(addBulkFFIDMetadataInput: FFIDMetadataInput!): [FFIDMetadata!]!
+  addFinalTransferConfirmation(addFinalTransferConfirmationInput: AddFinalTransferConfirmationInput!): FinalTransferConfirmation!
+  addMultipleFileStatuses(addMultipleFileStatusesInput: AddMultipleFileStatusesInput!): [FileStatus!]!
+}
+
+"Information about pagination in a connection."
+type PageInfo {
+  "When paginating forwards, are there more items?"
+  hasNextPage: Boolean!
+
+  "When paginating backwards, are there more items?"
+  hasPreviousPage: Boolean!
+
+  "When paginating backwards, the cursor to continue."
+  startCursor: String
+
+  "When paginating forwards, the cursor to continue."
+  endCursor: String
+}
+
+input PaginationInput {
+  limit: Int
+  currentPage: Int
+  currentCursor: String
+  fileFilters: FileFilters
+}
+
+enum PropertyType {
+  Defined
+  Supplied
+  System
+}
+
+type Query {
+  getSeries(body: String!): [Series!]!
+  getConsignment(consignmentid: UUID!, paginationInput: PaginationInput): Consignment
+  consignments(limit: Int!, currentCursor: String, currentPage: Int, consignmentFiltersInput: ConsignmentFilters): ConsignmentConnection!
+  getConsignmentsForMetadataReview: [Consignment!]!
+  customMetadata(consignmentid: UUID!): [CustomMetadataField!]!
+  displayProperties(consignmentid: UUID!): [DisplayPropertyField!]!
+  allDescendants(allDescendantsInput: AllDescendantsInput!): [File!]!
+}
+
+type Series {
+  seriesid: UUID!
+  bodyid: UUID!
+  name: String!
+  code: String!
+  description: String
+}
+
+input StartUploadInput {
+  consignmentId: UUID!
+  parentFolder: String!
+  includeTopLevelFolder: Boolean = false
+}
+
+type TransferAgreementCompliance {
+  consignmentId: UUID!
+  appraisalSelectionSignedOff: Boolean!
+  initialOpenRecords: Boolean
+  sensitivityReviewSignedOff: Boolean!
+}
+
+type TransferAgreementPrivateBeta {
+  consignmentId: UUID!
+  allPublicRecords: Boolean!
+  allCrownCopyright: Boolean!
+  allEnglish: Boolean
+}
+
+scalar UUID
+
+input UpdateBulkFileMetadataInput {
+  consignmentId: UUID!
+  fileIds: [UUID!]!
+  metadataProperties: [UpdateFileMetadataInput!]!
+}
+
+input UpdateConsignmentSeriesIdInput {
+  consignmentId: UUID!
+  seriesId: UUID!
+}
+
+input UpdateExportDataInput {
+  consignmentId: UUID!
+  exportLocation: String!
+  exportDatetime: ZonedDateTime
+  exportVersion: String!
+}
+
+input UpdateFileMetadataInput {
+  filePropertyIsMultiValue: Boolean!
+  filePropertyName: String!
+  value: String!
+}
+
+input UpdateMetadataSchemaLibraryVersionInput {
+  consignmentId: UUID!
+  metadataSchemaLibraryVersion: String!
+}
+
+scalar ZonedDateTime

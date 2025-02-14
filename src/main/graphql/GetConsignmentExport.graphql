@@ -39,6 +39,6 @@ query getConsignmentForExport($consignmentId: UUID!) {
                 softwareVersion
             }
         }
-        schemaLibraryVersion
+        metadataSchemaLibraryVersion
     }
 }

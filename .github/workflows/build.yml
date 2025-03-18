@@ -10,25 +10,6 @@ jobs:
     if: ${{ github.event.pull_request.merged == true && !contains(github.event.pull_request.labels.*.name, 'Version bump') }}
     steps:
       - uses: actions/checkout@v3
-      - name: Check ts-only
-        id: check-package-json
-        run: |
-            firstCommit="${{ github.event.pull_request.base.sha }}"
-            lastCommit="${{ github.event.pull_request.head.sha }}"
-          
-            if [ -z "$firstCommit" ] || [ -z "$lastCommit" ]; then
-              echo "Error: firstCommit or lastCommit is empty."
-              exit 1
-            fi
-          
-            changedFiles=$(git diff --name-only --diff-filter=d "$firstCommit" "$lastCommit")
-            if echo "$changedFiles" | grep -q "package.json"; then
-               echo "ts-only=true" >> $GITHUB_OUTPUT
-            else
-              echo "ts-only=false" >> $GITHUB_OUTPUT
-            fi
-
-      - name: Deploy artifact
-        run: gh workflow run deploy.yml -f ts-only=${{ steps.check-package-json.outputs.ts-only }}
+      - run: gh workflow run deploy.yml -f ts-only=${{ contains(github.event.pull_request.labels.*.name, 'ts-only') }}
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}

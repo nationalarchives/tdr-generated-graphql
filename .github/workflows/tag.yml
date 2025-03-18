@@ -20,7 +20,7 @@ jobs:
           fi
           
           changedFiles=$(git diff --name-only --diff-filter=d "$firstCommit" "$lastCommit")
-          if echo "$changedFiles" | grep -q "ts/package.json"; then
+          if echo "$changedFiles" | grep -qE "ts/package.json|ts/package-lock.json"; then
              echo "package-json-modified=true" >> $GITHUB_OUTPUT
           else
             echo "package-json-modified=false" >> $GITHUB_OUTPUT

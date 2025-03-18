@@ -6,15 +6,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - id: ts-files-changed
-        uses: tj-actions/changed-files@v41
         with:
-          files: ts
-      - if: ${{ steps.ts-files-changed.outputs.only_modified == 'true' }}
+          fetch-depth: 0
+      - name: Check ts-only
+        id: package-json-changed
+        run: |
+          firstCommit="${{ github.event.pull_request.base.sha }}"
+          lastCommit="${{ github.event.pull_request.head.sha }}"
+          
+          if [ -z "$firstCommit" ] || [ -z "$lastCommit" ]; then
+            echo "Error: firstCommit or lastCommit is empty."
+            exit 1
+          fi
+          
+          changedFiles=$(git diff --name-only --diff-filter=d "$firstCommit" "$lastCommit")
+          if echo "$changedFiles" | grep -q "ts/package.json"; then
+             echo "package-json-modified=true" >> $GITHUB_OUTPUT
+          else
+            echo "package-json-modified=false" >> $GITHUB_OUTPUT
+          fi
+      - if: ${{ steps.package-json-changed.outputs.package-json-modified == 'true' }}
         run: gh pr edit ${{ github.event.number }} --add-label ts-only
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}
-      - if: ${{ steps.ts-files-changed.outputs.only_modified == 'false' }}
+      - if: ${{ steps.package-json-changed.outputs.package-json-modified == 'false' }}
         run: gh pr edit ${{ github.event.number }} --remove-label ts-only
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}

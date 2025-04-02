@@ -1,6 +1,6 @@
-query getFilesWithUniqueAssetIdKey($consignmentId: UUID!) {
+query getFilesWithUniqueAssetIdKey($consignmentId: UUID!, $fileFiltersInput: FileFilters!) {
     getConsignment(consignmentid: $consignmentId) {
-        files {
+        files(fileFiltersInput: $fileFiltersInput) {
             fileId
             fileName
             metadata {

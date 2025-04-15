@@ -1,0 +1,3 @@
+mutation updateClientSideDraftMetadataFileName($updateClientSideDraftMetadataFileNameInput: UpdateClientSideDraftMetadataFileNameInput!) {
+    updateClientSideDraftMetadataFileName(updateClientSideDraftMetadataFileName:$updateClientSideDraftMetadataFileNameInput)
+}

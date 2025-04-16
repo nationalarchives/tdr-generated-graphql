@@ -1,6 +1,0 @@
-query getClientSideDraftMetadataFileName($consignmentId: UUID!) {
-    getConsignment(consignmentid: $consignmentId) {
-        consignmentid
-        clientSideDraftMetadataFileName
-    }
-}

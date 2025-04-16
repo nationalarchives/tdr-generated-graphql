@@ -5,6 +5,7 @@ query getConsignment($consignmentId: UUID!) {
         parentFolder
         consignmentReference
         parentFolderId
+        clientSideDraftMetadataFileName
         consignmentStatuses {
             statusType
             value

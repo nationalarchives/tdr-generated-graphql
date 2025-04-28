@@ -1,0 +1,12 @@
+query getFilesWithUniqueAssetIdKey($consignmentId: UUID!, $fileFiltersInput: FileFilters!) {
+    getConsignment(consignmentid: $consignmentId) {
+        files(fileFiltersInput: $fileFiltersInput) {
+            fileId
+            fileName
+            metadata {
+                clientSideOriginalFilePath
+                clientSideLastModifiedDate
+            }
+        }
+    }
+}

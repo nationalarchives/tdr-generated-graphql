@@ -1,6 +1,0 @@
-query getAllDescendantIds($allDescendantsInput: AllDescendantsInput!) {
-    allDescendants(allDescendantsInput: $allDescendantsInput) {
-        fileId
-        fileType
-    }
-}

@@ -1,6 +1,0 @@
-mutation deleteFileMetadata($deleteFileMetadataInput: DeleteFileMetadataInput!) {
-    deleteFileMetadata(deleteFileMetadataInput: $deleteFileMetadataInput)  {
-        fileIds
-        filePropertyNames
-    }
-}

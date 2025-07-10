@@ -2,6 +2,7 @@ import Dependencies._
 import sbt.url
 import ReleaseTransformations._
 import java.io.FileWriter
+import sbt.internal.librarymanagement.Publishing.sonaRelease
 
 ThisBuild / organization := "uk.gov.nationalarchives"
 ThisBuild / organizationName := "National Archives"
@@ -37,7 +38,11 @@ licenses := List("MIT" -> new URL("https://choosealicense.com/licenses/mit/"))
 homepage := Some(url("https://github.com/nationalarchives/tdr-generated-grapqhl"))
 
 useGpgPinentry := true
-publishTo := sonatypePublishToBundle.value
+publishTo := {
+  val centralSnapshots = "https://central.sonatype.com/repository/maven-snapshots/"
+  if (isSnapshot.value) Some("central-snapshots" at centralSnapshots)
+  else localStaging.value
+}
 publishMavenStyle := true
 
 releaseProcess := Seq[ReleaseStep](
@@ -50,14 +55,11 @@ releaseProcess := Seq[ReleaseStep](
   commitReleaseVersion,
   tagRelease,
   releaseStepCommand("publishSigned"),
-  releaseStepCommand("sonatypeBundleRelease"),
+  releaseStepCommand("sonaRelease"),
   setNextVersion,
   commitNextVersion,
   pushChanges
 )
-
-resolvers +=
-  "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
 graphqlCodegenStyle := Apollo
 graphqlCodegenJson := JsonCodec.Circe

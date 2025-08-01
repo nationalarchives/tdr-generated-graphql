@@ -8,19 +8,19 @@ These classes are used by other TDR repositories to communicate with the consign
 1. Add a new query file to `src/main/graphql`:
    * The file name should be in Pascal case e.g. FooBarBaz
    * The query/mutation name should be in Camel case e.g. fooBarBaz
-3. Download the latest [graphql schema file](https://raw.githubusercontent.com/nationalarchives/tdr-consignment-api/master/schema.graphql) into the `src/main/resources` directory
-4. Run the following commands to allow you to check that your changes work locally before submitting them:
+2. Download the latest [graphql schema file](https://raw.githubusercontent.com/nationalarchives/tdr-consignment-api/master/schema.graphql) into the `src/main/resources` directory
+3. Run the following commands to allow you to check that your changes work locally before submitting them:
 #### Scala version
   * `sbt package publishLocal`
 
 This will place a snapshot version of the built project jar in the local .ivy cache folder: $HOME/.ivy2/local/uk.gov.nationalarchives/tdr-generated-graphql_2.13/[version number]-SNAPSHOT
 
 Other sbt projects that have this project as a dependency can access the local snapshot version by changing the version number in their build.sbt file, for example:
-  ```
-  ... other dependencies...
-  "uk.gov.nationalarchives" %% "tdr-generated-graphql" % "[version number]-SNAPSHOT"
-  ... other dependences...
-   ```
+```
+... other dependencies...
+"uk.gov.nationalarchives" %% "tdr-generated-graphql" % "[version number]-SNAPSHOT"
+... other dependences...
+```
 
 #### Typescript version  
 The following commands create a symbolic link to the generated Typescript version of the schema.

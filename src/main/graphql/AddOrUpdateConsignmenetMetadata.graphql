@@ -1,0 +1,7 @@
+mutation addOrUpdateConsignmentMetadata($addOrUpdateConsignmentMetadataInput: AddOrUpdateConsignmentMetadataInput!) {
+  addOrUpdateConsignmentMetadata(addOrUpdateConsignmentMetadataInput: $addOrUpdateConsignmentMetadataInput) {
+    consignmentId
+    propertyName
+    value
+  }
+}

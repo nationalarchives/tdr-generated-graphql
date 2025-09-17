@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-      - uses: sbt/setup-sbt@234370af1319038bf8dc432f8a7e4b83078a1781
+      - uses: sbt/setup-sbt@17575ea4e18dd928fe5968dbe32294b97923d65b
       - name: Import GPG key
         id: import_gpg
         uses: crazy-max/ghaction-import-gpg@e89d40939c28e39f97cf32126055eeae86ba74ec

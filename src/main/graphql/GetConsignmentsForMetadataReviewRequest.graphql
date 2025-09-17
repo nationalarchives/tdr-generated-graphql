@@ -1,0 +1,10 @@
+query getConsignmentForMetadataReviewRequest($consignmentId: UUID!) {
+    getConsignment(consignmentid: $consignmentId) {
+        userid
+        consignmentReference
+        seriesName
+        transferringBodyName
+        totalClosedRecords
+        totalFiles
+    }
+}

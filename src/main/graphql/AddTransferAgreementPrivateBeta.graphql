@@ -2,7 +2,5 @@ mutation addTransferAgreementPrivateBeta($input: AddTransferAgreementPrivateBeta
     addTransferAgreementPrivateBeta(addTransferAgreementPrivateBetaInput: $input) {
         consignmentId
         allPublicRecords
-        allCrownCopyright
-        allEnglish
     }
 }

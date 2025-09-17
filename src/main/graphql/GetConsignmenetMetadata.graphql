@@ -1,0 +1,9 @@
+query getConsignmentFilesMetadata($consignmentId: UUID!, $consignmentMetadataFiltersInput: ConsignmentMetadataFilter) {
+    getConsignment(consignmentid: $consignmentId) {
+        consignmentReference
+        consignmentMetadata (consignmentMetadataFiltersInput: $consignmentMetadataFiltersInput) {
+            propertyName
+            value
+        }
+    }
+}

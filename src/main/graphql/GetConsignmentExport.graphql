@@ -40,5 +40,9 @@ query getConsignmentForExport($consignmentId: UUID!) {
             }
         }
         metadataSchemaLibraryVersion
+        consignmentMetadata {
+            propertyName
+            value
+        }
     }
 }

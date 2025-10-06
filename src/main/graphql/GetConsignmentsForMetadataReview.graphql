@@ -4,5 +4,11 @@ query getConsignmentsForMetadataReview {
         consignmentReference,
         seriesName,
         transferringBodyName
+        consignmentStatuses {
+            statusType
+            value
+            createdDatetime
+            modifiedDatetime
+        }
     }
 }

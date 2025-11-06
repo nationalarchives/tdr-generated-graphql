@@ -1,0 +1,3 @@
+mutation updateParentFolder($updateParentFolderInput:UpdateParentFolderInput!) {
+    updateParentFolder(updateParentFolderInput:$updateParentFolderInput)
+}

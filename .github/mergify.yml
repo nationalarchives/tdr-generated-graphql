@@ -4,9 +4,6 @@ queue_rules:
     queue_conditions:
       - "check-success=test"
       - "check-success=security/snyk (nationalarchives)"
-    merge_conditions: 
-      - "check-success=test"
-      - "check-success=security/snyk (nationalarchives)"
 pull_request_rules:
   - name: automatic merge for Scala Steward
     conditions:
@@ -14,6 +11,7 @@ pull_request_rules:
       - "check-success=test"
       - "check-success=security/snyk (nationalarchives)"
       - or:
+          - files=version.sbt
           - files=build.sbt
           - files~=^(!?project/)
     actions:
@@ -22,3 +20,5 @@ pull_request_rules:
         message: Automatically approving Scala Steward
       queue:
         name: default
+merge_queue:
+  max_parallel_checks: 1

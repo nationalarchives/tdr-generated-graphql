@@ -14,7 +14,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - uses: sbt/setup-sbt@a627500d27445f8c5021755a439829b6e78e3358 # v1.1.15
       - name: Import GPG key
         id: import_gpg
@@ -41,12 +41,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}
       - if: ${{ github.event.inputs.ts-only == 'false' }}
         name: Send success message
-        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@f52edf22c81f568202369a3b31da0277541b0507 # v0.0.11
+        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@a8165e7b3a7438f479cf2489fa58e9d8fd3608e1 # v0.0.12
         with:
           message: ":white_check_mark: Generated graphql ${{ steps.build.outputs.latest-tag }} has been published"
           slack-url: ${{ secrets.SLACK_WEBHOOK }}
       - name: Send success message
-        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@f52edf22c81f568202369a3b31da0277541b0507 # v0.0.11
+        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@a8165e7b3a7438f479cf2489fa58e9d8fd3608e1 # v0.0.12
         with:
           message: ":white_check_mark: Generated graphql ${{ steps.deploy-npm.outputs.set-npm-version }} has been published to npm"
           slack-url: ${{ secrets.SLACK_WEBHOOK }}

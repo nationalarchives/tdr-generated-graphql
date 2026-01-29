@@ -1,6 +1,6 @@
 {
   "name": "@nationalarchives/tdr-generated-graphql",
-  "version": "1.0.533",
+  "version": "1.0.535",
   "description": "",
   "main": "index.ts",
   "scripts": {
@@ -35,7 +35,7 @@
     "webpack-cli": "^6.0.1"
   },
   "dependencies": {
-    "@graphql-codegen/cli": "^5.0.7",
+    "@graphql-codegen/cli": "^6.1.1",
     "graphql": "^16.12.0",
     "y18n": "^5.0.8"
   }

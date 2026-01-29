@@ -4,6 +4,10 @@ updates:
     directory: "/ts"
     schedule:
       interval: "daily"
+    groups:
+      npm:
+        patterns:
+          - "*"
     versioning-strategy: increase
   - package-ecosystem: "github-actions"
     directory: "/"

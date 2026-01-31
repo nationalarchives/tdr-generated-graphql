@@ -41,12 +41,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}
       - if: ${{ github.event.inputs.ts-only == 'false' }}
         name: Send success message
-        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@a8165e7b3a7438f479cf2489fa58e9d8fd3608e1 # v0.0.12
+        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@cd362ffa9386c007c816bfd15a25b6f0a3c3b3d6 # v0.0.14
         with:
           message: ":white_check_mark: Generated graphql ${{ steps.build.outputs.latest-tag }} has been published"
           slack-url: ${{ secrets.SLACK_WEBHOOK }}
       - name: Send success message
-        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@a8165e7b3a7438f479cf2489fa58e9d8fd3608e1 # v0.0.12
+        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@cd362ffa9386c007c816bfd15a25b6f0a3c3b3d6 # v0.0.14
         with:
           message: ":white_check_mark: Generated graphql ${{ steps.deploy-npm.outputs.set-npm-version }} has been published to npm"
           slack-url: ${{ secrets.SLACK_WEBHOOK }}

@@ -12,6 +12,13 @@ query getConsignmentFilesMetadata($consignmentId: UUID!, $fileFiltersInput: File
                 statusValue
             }
         }
+        metadataReviewLogs {
+            metadataReviewLogId
+            consignmentId
+            userId
+            action
+            eventTime
+        }
         consignmentReference
     }
 }

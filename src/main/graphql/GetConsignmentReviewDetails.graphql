@@ -1,0 +1,11 @@
+query getConsignmentReviewDetails($statusFilter: String) {
+    getConsignmentReviewDetails(statusFilter: $statusFilter) {
+        consignmentId
+        consignmentReference
+        reviewStatus
+        transferringBodyName
+        seriesName
+        lastUpdated
+    }
+}
+

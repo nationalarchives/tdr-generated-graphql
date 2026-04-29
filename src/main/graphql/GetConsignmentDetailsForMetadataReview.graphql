@@ -3,6 +3,13 @@ query getConsignmentDetailsForMetadataReview($consignmentId: UUID!) {
         consignmentReference,
         seriesName,
         transferringBodyName,
-        userid
+        userid,
+        totalClosedRecords,
+        includeTopLevelFolder,
+        totalFiles,
+        consignmentMetadata {
+            propertyName
+            value
+        }
     }
 }

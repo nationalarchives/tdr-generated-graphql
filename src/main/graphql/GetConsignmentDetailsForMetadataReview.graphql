@@ -11,5 +11,13 @@ query getConsignmentDetailsForMetadataReview($consignmentId: UUID!) {
             propertyName
             value
         }
+        metadataReviewLogs {
+            metadataReviewLogId
+            consignmentId
+            userId
+            action
+            eventTime
+            metadataReviewNotes
+        }
     }
 }

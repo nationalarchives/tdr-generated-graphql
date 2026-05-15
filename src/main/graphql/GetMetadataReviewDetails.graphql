@@ -1,9 +1,0 @@
-query getMetadataReviewDetails($consignmentId: UUID!) {
-    getMetadataReviewDetails(consignmentid: $consignmentId) {
-        metadataReviewLogId,
-        consignmentId,
-        userId,
-        action,
-        eventTime
-    }
-}

@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "./dist/",
+    "rootDir": "./src",
     "noImplicitAny": true,
     "module": "commonjs",
     "target": "es2016",
@@ -11,6 +12,7 @@
     "declaration": true,
     "declarationDir": ".",
     "moduleResolution": "node",
+    "ignoreDeprecations": "6.0",
     "strict": true
   },
   "include": ["src/*"],

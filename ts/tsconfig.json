@@ -4,7 +4,7 @@
     "outDir": "./dist/",
     "rootDir": "./src",
     "noImplicitAny": true,
-    "module": "commonjs",
+    "module": "nodenext",
     "target": "es2016",
     "lib": ["es2017", "dom"],
     "allowSyntheticDefaultImports": true,
@@ -12,8 +12,7 @@
     "sourceMap": true,
     "declaration": true,
     "declarationDir": ".",
-    "moduleResolution": "node",
-    "ignoreDeprecations": "6.0",
+    "moduleResolution": "nodenext",
     "strict": true
   },
   "include": ["src/*"],

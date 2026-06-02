@@ -13,6 +13,8 @@ generates:
       - "typescript"
       - "typescript-operations"
       - "typescript-document-nodes"
+    config:
+      onlyOperationTypes: true
   ./graphql.schema.json:
     plugins:
       - "introspection"

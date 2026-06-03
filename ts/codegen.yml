@@ -4,6 +4,9 @@ documents: "../src/main/graphql/*.graphql"
 config:
   scalars:
     Long: number
+    UUID: string
+    LocalDateTime: string
+    ZonedDateTime: string
 generates:
   src/index.d.ts:
     plugins:

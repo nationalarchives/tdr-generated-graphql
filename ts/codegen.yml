@@ -10,7 +10,6 @@ generates:
       - typescript-graphql-files-modules
   src/index.ts:
     plugins:
-      - "typescript"
       - "typescript-operations"
       - "typescript-document-nodes"
   ./graphql.schema.json:

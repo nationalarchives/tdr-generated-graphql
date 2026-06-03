@@ -20,6 +20,7 @@
   "files": [
     "index.js",
     "index.d.ts",
+    "schema-types.d.ts",
     "package.json"
   ],
   "homepage": "https://github.com/nationalarchives/tdr-generated-graphql#readme",

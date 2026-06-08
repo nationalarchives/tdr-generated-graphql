@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-false
 npm config set //registry.npmjs.org/:_authToken=$1
 cd ts
 npm ci

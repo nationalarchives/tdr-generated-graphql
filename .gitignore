@@ -8,3 +8,4 @@ index.d.ts
 ts/.DS_Store
 ts/schema-types.d.ts
 ts/src/schema-types.d.ts
+ts/src/schema-types.ts

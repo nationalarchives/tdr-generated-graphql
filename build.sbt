@@ -72,6 +72,7 @@ lazy val root = (project in file("."))
       Seq(
         scalaTest % Test,
         sangria,
+        releaseIgnoreUntrackedFiles := true,
         circeCore,
         circeGeneric
       )

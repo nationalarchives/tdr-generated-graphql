@@ -29,7 +29,7 @@ jobs:
       - run: ./.github/scripts/setup.sh
       - name: Get NPM version
         id: get-npm-version
-        run: echo "version=$(awk '/version/{gsub(/("|",)/,"",$2);print $2}' package.json)" >> $GITHUB_OUTPUT
+        run: echo "version=$(awk '/version/{gsub(/("|",)/,"",$2);print $2}' ts/package.json)" >> $GITHUB_OUTPUT
       - name: Deploy NPM script
         run: |
           ./.github/scripts/deploy_npm.sh ${{ secrets.NPM_TOKEN }}

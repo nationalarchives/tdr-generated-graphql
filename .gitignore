@@ -6,3 +6,5 @@ index.d.ts
 .DS_Store
 .bsp/
 ts/.DS_Store
+ts/schema-types.d.ts
+ts/src/schema-types.d.ts

@@ -4,13 +4,22 @@ documents: "../src/main/graphql/*.graphql"
 config:
   scalars:
     Long: number
+    UUID: string
+    LocalDateTime: string
+    ZonedDateTime: string
 generates:
   src/index.d.ts:
     plugins:
       - typescript-graphql-files-modules
-  src/index.ts:
+  src/schema-types.ts:
     plugins:
       - "typescript"
+  src/index.ts:
+    config:
+      importSchemaTypesFrom: "src/schema-types"
+    plugins:
+      - add:
+          content: "export * from './schema-types';"
       - "typescript-operations"
       - "typescript-document-nodes"
   ./graphql.schema.json:

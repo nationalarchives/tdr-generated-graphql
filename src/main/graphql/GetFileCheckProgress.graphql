@@ -5,6 +5,7 @@ query getFileCheckProgress($consignmentId: UUID!) {
         totalFiles
         files {
             fileStatuses {
+                fileId
                 statusType
                 statusValue
             }

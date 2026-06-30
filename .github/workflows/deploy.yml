@@ -7,6 +7,11 @@ on:
         description: Whether to deploy to npm only
         required: false
         type: boolean
+      sbt-only:
+        default: false
+        description: Whether to deploy to maven only
+        required: false
+        type: boolean
 env:
   RUN_NUMBER: ${{ github.run_id }}${{ github.run_attempt }}
   BRANCH_NAME: version-bump-${{ github.run_id }}${{ github.run_attempt }}
@@ -14,6 +19,12 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Validate inputs
+        run: |
+          if [[ "${{ github.event.inputs.ts-only }}" == "true" && "${{ github.event.inputs.sbt-only }}" == "true" ]]; then
+            echo "Error: ts-only and sbt-only cannot both be true."
+            exit 1
+          fi
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           persist-credentials: true
@@ -27,16 +38,18 @@ jobs:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
       - run: ./.github/scripts/setup.sh
-      - name: Get NPM version
+      - if: ${{ github.event.inputs.sbt-only == 'false' }}
+        name: Get NPM version
         id: get-npm-version
         run: echo "version=$(awk '/version/{gsub(/("|",)/,"",$2);print $2}' ts/package.json)" >> $GITHUB_OUTPUT
-      - name: Deploy NPM script
+      - if: ${{ github.event.inputs.sbt-only == 'false' }}
+        name: Deploy NPM script
         run: |
           ./.github/scripts/deploy_npm.sh ${{ secrets.NPM_TOKEN }}
         id: deploy-npm
       - name: Send failure message
         id: failure-message
-        if: failure()
+        if: failure() && github.event.inputs.sbt-only == 'false'
         uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@f318ce8a5d99c08b1235663f97fdb1b35844674e # v0.0.39
         with:
           message: ":x: NPM publish failed for version ${{ steps.get-npm-version.outputs.version }} in repo ${{ github.event.repository.name }}"
@@ -59,6 +72,7 @@ jobs:
           message: ":white_check_mark: Generated graphql ${{ steps.build.outputs.latest-tag }} has been published"
           slack-url: ${{ secrets.SLACK_WEBHOOK }}
       - name: Send success message
+        if: ${{ github.event.inputs.sbt-only == 'false' }}
         uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@f318ce8a5d99c08b1235663f97fdb1b35844674e # v0.0.39
         with:
           message: ":white_check_mark: Generated graphql ${{ steps.deploy-npm.outputs.set-npm-version }} has been published to npm"

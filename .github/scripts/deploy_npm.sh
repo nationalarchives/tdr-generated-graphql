@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 npm config set //registry.npmjs.org/:_authToken=$1
 cd ts
 npm ci
@@ -9,5 +10,5 @@ git add package.json package-lock.json
 git commit -m 'Update npm version'
 git push
 npm publish --access public
+echo set-npm-version=$(awk '/version/{gsub(/("|",)/,"",$2);print $2}' package.json) >> $GITHUB_OUTPUT
 cd ..
-echo set-npm-version=$(awk '/version/{gsub(/("|",)/,"",$2);print $2}' ts/package.json) >> $GITHUB_OUTPUT

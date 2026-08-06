@@ -1,6 +1,9 @@
 name: Tag if there are only ts changes
 on:
   pull_request:
+permissions:
+  id-token: write
+  contents: write
 jobs:
   tag:
     runs-on: ubuntu-latest

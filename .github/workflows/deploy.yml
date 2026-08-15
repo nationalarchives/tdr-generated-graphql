@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: true
-      - uses: sbt/setup-sbt@bfea3c5f48abd221b04a6df4798aa5eb8b6a2baf # v1.5.6
+      - uses: sbt/setup-sbt@8feba82adc7f01ddcf8165b86f778bdb5b82cebc # v1.5.7
       - name: Import GPG key
         id: import_gpg
         uses: crazy-max/ghaction-import-gpg@2dc316deee8e90f13e1a351ab510b4d5bc0c82cd # v7.0.0

@@ -1,6 +1,6 @@
 {
   "name": "@nationalarchives/tdr-generated-graphql",
-  "version": "1.0.600",
+  "version": "1.0.601",
   "description": "",
   "main": "index.ts",
   "scripts": {

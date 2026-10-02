@@ -1,5 +1,5 @@
-query getSeries($body: String!) {
-    getSeries(body: $body) {
+query getSeries($bodies: [String!]!) {
+    getSeries(bodies: $bodies) {
         seriesid,
         bodyid,
         name,

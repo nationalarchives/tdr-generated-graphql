@@ -1,5 +1,6 @@
 query getFilesWithUniqueAssetIdKey($consignmentId: UUID!, $fileFiltersInput: FileFilters!) {
     getConsignment(consignmentid: $consignmentId) {
+        seriesName
         files(fileFiltersInput: $fileFiltersInput) {
             fileId
             fileName

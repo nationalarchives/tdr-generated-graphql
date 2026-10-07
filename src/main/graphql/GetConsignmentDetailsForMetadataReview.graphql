@@ -5,6 +5,7 @@ query getConsignmentDetailsForMetadataReview($consignmentId: UUID!) {
         transferringBodyName,
         userid,
         totalClosedRecords,
+        totalRetainedRecords,
         includeTopLevelFolder,
         totalFiles,
         consignmentMetadata {

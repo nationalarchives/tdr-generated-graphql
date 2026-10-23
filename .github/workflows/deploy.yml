@@ -33,9 +33,12 @@ jobs:
       - name: Get NPM version
         id: get-npm-version
         run: echo "version=$(awk '/version/{gsub(/("|",)/,"",$2);print $2}' ts/package.json)" >> $GITHUB_OUTPUT
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
       - name: Deploy NPM script
         run: |
-          ./.github/scripts/deploy_npm.sh ${{ secrets.NPM_TOKEN }}
+          ./.github/scripts/deploy_npm.sh
         id: deploy-npm
       - name: Send failure message
         id: failure-message

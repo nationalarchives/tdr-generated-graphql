@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nationalarchives/tdr-generated-graphql.git"
+    "url": "git+https://github.com/nationalarchives/tdr-generated-graphql"
   },
   "author": "",
   "license": "MIT",

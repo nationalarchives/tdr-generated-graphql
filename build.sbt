@@ -7,7 +7,7 @@ import sbt.internal.librarymanagement.Publishing.sonaRelease
 ThisBuild / organization := "uk.gov.nationalarchives"
 ThisBuild / organizationName := "National Archives"
 
-scalaVersion := "3.10.0"
+scalaVersion := "2.13.18"
 
 lazy val setLatestTagOutput = taskKey[Unit]("Sets a GitHub actions output for the latest tag")
 

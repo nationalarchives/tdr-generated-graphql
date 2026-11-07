@@ -43,7 +43,7 @@ jobs:
       - name: Send failure message
         id: failure-message
         if: failure()
-        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@51a06bbc08eb65018238b144d0ad8bfd707a8ffa # v0.0.50
+        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@462fd7090a10eab4c55cf4f18887835a8ce67599 # v0.0.52
         with:
           message: ":x: NPM publish failed for version ${{ steps.get-npm-version.outputs.version }} in repo ${{ github.event.repository.name }}"
           slack-url: ${{ secrets.SLACK_WEBHOOK }}
@@ -60,12 +60,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}
       - if: ${{ github.event.inputs.ts-only == 'false' }}
         name: Send success message
-        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@51a06bbc08eb65018238b144d0ad8bfd707a8ffa # v0.0.50
+        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@462fd7090a10eab4c55cf4f18887835a8ce67599 # v0.0.52
         with:
           message: ":white_check_mark: Generated graphql ${{ steps.build.outputs.latest-tag }} has been published"
           slack-url: ${{ secrets.SLACK_WEBHOOK }}
       - name: Send success message
-        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@51a06bbc08eb65018238b144d0ad8bfd707a8ffa # v0.0.50
+        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@462fd7090a10eab4c55cf4f18887835a8ce67599 # v0.0.52
         with:
           message: ":white_check_mark: Generated graphql ${{ steps.deploy-npm.outputs.set-npm-version }} has been published to npm"
           slack-url: ${{ secrets.SLACK_WEBHOOK }}

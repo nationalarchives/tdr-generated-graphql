@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: true
-      - uses: sbt/setup-sbt@b113b960ba361e87e08ce02a390d51871b7ee459 # v1.5.13
+      - uses: sbt/setup-sbt@67d461eba2c4753196c230e02da850757ba4775e # v1.5.14
       - name: Import GPG key
         id: import_gpg
         uses: crazy-max/ghaction-import-gpg@2dc316deee8e90f13e1a351ab510b4d5bc0c82cd # v7.0.0
@@ -43,7 +43,7 @@ jobs:
       - name: Send failure message
         id: failure-message
         if: failure()
-        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@51a06bbc08eb65018238b144d0ad8bfd707a8ffa # v0.0.50
+        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@5a96b84cf82bce1371168cc31cb89f88cad86763 # v0.0.53
         with:
           message: ":x: NPM publish failed for version ${{ steps.get-npm-version.outputs.version }} in repo ${{ github.event.repository.name }}"
           slack-url: ${{ secrets.SLACK_WEBHOOK }}
@@ -60,12 +60,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}
       - if: ${{ github.event.inputs.ts-only == 'false' }}
         name: Send success message
-        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@51a06bbc08eb65018238b144d0ad8bfd707a8ffa # v0.0.50
+        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@5a96b84cf82bce1371168cc31cb89f88cad86763 # v0.0.53
         with:
           message: ":white_check_mark: Generated graphql ${{ steps.build.outputs.latest-tag }} has been published"
           slack-url: ${{ secrets.SLACK_WEBHOOK }}
       - name: Send success message
-        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@51a06bbc08eb65018238b144d0ad8bfd707a8ffa # v0.0.50
+        uses: nationalarchives/tdr-github-actions/.github/actions/slack-send@5a96b84cf82bce1371168cc31cb89f88cad86763 # v0.0.53
         with:
           message: ":white_check_mark: Generated graphql ${{ steps.deploy-npm.outputs.set-npm-version }} has been published to npm"
           slack-url: ${{ secrets.SLACK_WEBHOOK }}

@@ -1,0 +1,13 @@
+query getConsignmentFileCheckFailures($consignmentId: UUID) {
+    getConsignmentFileCheckFailures(consignmentId: $consignmentId) {
+        consignmentid
+        consignmentReference
+        transferringBodyName
+        seriesName
+        userid
+        consignmentStatuses {
+            statusType
+            createdDatetime
+        }
+    }
+}
